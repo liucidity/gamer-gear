@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["linux-arm64-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// model Contact {
+//   id        String @id @default(auto()) @map("_id") @db.ObjectId
+//   firstName String
+//   lastName  String
+//   email     String
+//   avatar    String
+// }
+
+model Games {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  game_name String @unique
+  publisher String
+  release   String
+  // game_players Players_Games[]
+
+  players    Players[] @relation(fields: [playersIDs], references: [id])
+  playersIDs String[]  @db.ObjectId
+}
+
+model Teams {
+  id      String    @id @default(auto()) @map("_id") @db.ObjectId
+  name    String    @unique
+  Players Players[]
+}
+
+// model Players_Games {
+//   id       String  @id @default(auto()) @map("_id") @db.ObjectId
+//   game     Games   @relation(fields: [gameId], references: [id]) 
+//   gameId   String  @db.ObjectId @unique
+//   player   Players @relation(fields: [playerId], references: [id])
+//   playerId String  @db.ObjectId
+// }
+
+model Players {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  first_name String?
+  last_name  String?
+  username   String
+  picture    String?
+  team       Teams?  @relation(fields: [teamID], references: [id])
+  teamID     String? @db.ObjectId
+
+  games    Games[]  @relation(fields: [gamesIDs], references: [id])
+  gamesIDs String[] @db.ObjectId
+
+  // game       Games?          @relation(fields: [gameId], references: [id])
+  // gameId     String?         @db.ObjectId
+  // players Players_Games[]
+
+  player_peripherals Player_Peripherals[]
+
+  // socials
+}
+
+model Player_Peripherals {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  players    Players   @relation(fields: [playerId], references: [id])
+  playerId   String    @db.ObjectId
+  mouse      Mouse?    @relation(fields: [mouseId], references: [id])
+  mouseId    String?   @db.ObjectId
+  keyboard   Keyboard? @relation(fields: [keyboardId], references: [id])
+  keyboardId String?   @db.ObjectId
+  monitor    Monitors? @relation(fields: [monitorId], references: [id])
+  monitorId  String?   @db.ObjectId
+}
+
+model Brands {
+  id       String     @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  Mouse    Mouse[]
+  Keyboard Keyboard[]
+  Monitors Monitors[]
+}
+
+model Mouse {
+  id                 String               @id @default(auto()) @map("_id") @db.ObjectId
+  brand              Brands?              @relation(fields: [brandsID], references: [id])
+  brandsID           String?              @db.ObjectId
+  product_name       String
+  shop_link          String
+  description        String
+  player_peripherals Player_Peripherals[]
+}
+
+model Keyboard {
+  id                 String               @id @default(auto()) @map("_id") @db.ObjectId
+  product_name       String
+  brand              Brands?              @relation(fields: [brandsID], references: [id])
+  brandsID           String?              @db.ObjectId
+  shop_link          String
+  description        String
+  player_peripherals Player_Peripherals[]
+}
+
+model Monitors {
+  id                 String               @id @default(auto()) @map("_id") @db.ObjectId
+  product_name       String
+  brand              Brands?              @relation(fields: [brandsID], references: [id])
+  brandsID           String?              @db.ObjectId
+  shop_link          String
+  description        String
+  player_peripherals Player_Peripherals[]
+}
