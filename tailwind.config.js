@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         "off-white": "#FEFEFE",
+        "purple-main": "#c42bf0"
       }
     },
   },
