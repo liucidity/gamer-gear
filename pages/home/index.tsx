@@ -25,54 +25,6 @@ const topProducts = [
     type: "Headphones",
     id: "id4",
   },
-  {
-    type: "Headphones",
-    id: "id5",
-  },
-  {
-    type: "Headphones",
-    id: "id6",
-  },
-  {
-    type: "Headphones",
-    id: "id7",
-  },
-  {
-    type: "Headphones",
-    id: "id8",
-  },
-  {
-    type: "Headphones",
-    id: "id9",
-  },
-  {
-    type: "Headphones",
-    id: "id10",
-  },
-  {
-    type: "Headphones",
-    id: "id11",
-  },
-  {
-    type: "Headphones",
-    id: "id12",
-  },
-  {
-    type: "Headphones",
-    id: "id13",
-  },
-  {
-    type: "Headphones",
-    id: "id14",
-  },
-  {
-    type: "Headphones",
-    id: "id15",
-  },
-  {
-    type: "Headphones",
-    id: "id16",
-  },
 ];
 
 const Home = ({ children }: Props) => {
