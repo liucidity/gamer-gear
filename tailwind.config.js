@@ -1,3 +1,5 @@
+const {fontFamily} = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -11,6 +13,9 @@ module.exports = {
         "purple-main": "#c42bf0",
         "purple-light": "#D461F4",
         "purple-dark": "#AC0FD9"
+      },
+      fontFamily: {
+        sans: ['var(--font-roboto)', ...fontFamily.sans]
       }
     },
   },
