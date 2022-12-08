@@ -20,7 +20,7 @@ const SnapCarousel = ({ products }: Props) => {
     );
   });
   return (
-    <ul className="flex w-screen snap-x snap-mandatory items-center overflow-x-auto border-2 border-green-500 px-2 py-6 md:justify-center ">
+    <ul className="flex w-screen snap-x snap-mandatory items-center overflow-x-auto px-2 py-6 md:justify-center ">
       {productsListItem}
     </ul>
   );
