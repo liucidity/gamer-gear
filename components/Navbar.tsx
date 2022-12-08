@@ -9,8 +9,8 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="fixed inset-x-0 top-0 z-10 w-screen px-14 py-5 bg-slate-400">
-        <div className="flex justify-between">
+      <nav className="fixed inset-x-0 top-0 z-10 w-screen bg-gradient-to-br from-purple-light via-purple-main to-purple-dark px-14 py-5">
+        <div className="flex justify-between md:justify-start">
           <div className="border-2 border-black">Logo Here</div>
           <button
             className="flex border-2 border-purple-500 md:hidden"
