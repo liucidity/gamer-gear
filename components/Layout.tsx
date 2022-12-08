@@ -1,12 +1,22 @@
+// ---- Fonts
+import { Roboto } from '@next/font/google'
+
 import React from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-const Layout = ({ children }) => {
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
+})
+
+const Layout = ({ children }: any) => {
   return (
     <>
       <Navbar></Navbar>
-      <main>{ children }</main>
+      <main className={`${roboto.variable} font-sans`}>{ children }</main>
       <Footer></Footer>
     </>
   )
