@@ -13,14 +13,14 @@ const SnapCarousel = ({ products }: Props) => {
     return (
       <li
         key={id}
-        className="mx-2 h-56 w-44 shrink-0 snap-center border-2 border-purple-500"
+        className="mx-3 h-56 w-44 shrink-0 snap-center border-2 border-purple-500"
       >
         {type}
       </li>
     );
   });
   return (
-    <ul className="flex w-screen snap-x snap-mandatory items-center overflow-x-auto border-2 border-green-500 px-2 py-6">
+    <ul className="flex w-screen snap-x snap-mandatory items-center overflow-x-auto border-2 border-green-500 px-2 py-6 md:justify-center ">
       {productsListItem}
     </ul>
   );
