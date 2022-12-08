@@ -6,29 +6,28 @@ import {PrismaClient} from '@prisma/client';
 
 
 
-export async function getServerSideProps() {
-const prisma = new PrismaClient();
+// export async function getServerSideProps() {
+// const prisma = new PrismaClient();
 
-const player = await prisma.contact.create({
-  data: {
-    name: "hi"
-  }
-})
-  const contacts = await prisma.contact.findMany();
-  return {
-    props: {
-      initialContacts: contacts
-    }
-  };
-}
+// const player = await prisma.contact.create({
+//   data: {
+//     name: "hi"
+//   }
+// })
+//   const contacts = await prisma.contact.findMany();
+//   return {
+//     props: {
+//       initialContacts: contacts
+//     }
+//   };
+// }
 
-export default function Home({initialContacts}:any) {
-  console.log(initialContacts)
+export default function Home({}:any) {
+  console.log()
   return (
     <div className="h-screen w-screen flex flex-col">
       <div>
-        LLLL
-        {/* <div>{...initialContacts}</div> */}
+        Index
       </div>
     </div>
   )
