@@ -9,7 +9,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="fixed top-0 z-10 w-screen border-2 border-blue-700 px-14 py-5">
+      <nav className="fixed inset-x-0 top-0 z-10 w-screen px-14 py-5 bg-slate-400">
         <div className="flex justify-between">
           <div className="border-2 border-black">Logo Here</div>
           <button
@@ -25,7 +25,7 @@ const Navbar = () => {
           </div>
         </div>
         {dropDownOpen && (
-          <div className="flex flex-col items-center justify-start border-2    border-black py-4">
+          <div className="flex flex-col items-center justify-start py-4">
             <MenuButtons link={"/products"}>Products</MenuButtons>
             <MenuButtons link={"/about"}>About</MenuButtons>
             <MenuButtons link={"/players"}>Players</MenuButtons>
