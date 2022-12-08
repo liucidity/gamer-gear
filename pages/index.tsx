@@ -23,12 +23,9 @@ import {PrismaClient} from '@prisma/client';
 // }
 
 export default function Home({}:any) {
-  console.log()
   return (
-    <div className="h-screen w-screen flex flex-col">
-      <div>
-        Index
-      </div>
+    <div>
+      Hello World
     </div>
   )
 }
