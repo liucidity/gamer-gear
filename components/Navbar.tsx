@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Logo from "./Widgets/Logo";
 import MenuButtons from "./Widgets/MenuButtons";
 
 const Navbar = () => {
@@ -9,9 +10,9 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="fixed inset-x-0 top-0 z-10 w-screen bg-gradient-to-br from-purple-light via-purple-main to-purple-dark px-14 py-5">
+      <nav className="fixed inset-x-0 top-0 z-10 w-screen bg-gradient-to-br from-purple-light via-purple-main to-purple-dark px-6 md:px-14 py-5">
         <div className="flex justify-between md:justify-start">
-          <div className="border-2 border-black">Logo Here</div>
+          <Logo></Logo>
           <button
             className="flex border-2 border-purple-500 md:hidden"
             onClick={() => handleDropDown()}
