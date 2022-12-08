@@ -1,27 +1,86 @@
 import React from "react";
+import SnapCarousel from "../../components/SnapCarousel";
 
-const Home = ({ children }) => {
+const topProducts = [
+  {
+    type: "Mouse",
+    id: "id1",
+  },
+  {
+    type: "Keyboard",
+    id: "id2",
+  },
+  {
+    type: "Monitor",
+    id: "id3",
+  },
+  {
+    type: "Headphones",
+    id: "id4",
+  },
+  {
+    type: "Headphones",
+    id: "id5",
+  },
+  {
+    type: "Headphones",
+    id: "id6",
+  },
+  {
+    type: "Headphones",
+    id: "id7",
+  },
+  {
+    type: "Headphones",
+    id: "id8",
+  },
+  {
+    type: "Headphones",
+    id: "id9",
+  },
+  {
+    type: "Headphones",
+    id: "id10",
+  },
+  {
+    type: "Headphones",
+    id: "id11",
+  },
+  {
+    type: "Headphones",
+    id: "id12",
+  },
+  {
+    type: "Headphones",
+    id: "id13",
+  },
+  {
+    type: "Headphones",
+    id: "id14",
+  },
+  {
+    type: "Headphones",
+    id: "id15",
+  },
+  {
+    type: "Headphones",
+    id: "id16",
+  },
+];
+
+const Home = (props: { children: any }) => {
   return (
-    <section className="flex min-h-screen w-screen flex-col items-center border-2 border-slate-500 pt-32">
-      <div className="border-2 border-blue-500 h-1/3 w-screen">Hero Section</div>
-      <div className="border-2 border-blue-500 h-1/3 w-screen">
-        searchbar - ideally center
-      </div>
-      <div className="flex w-screen flex-wrap items-center justify-between h-1/3 border-2 border-blue-500 p-10 ">
-        <div className="h-56 border-2 border-purple-500 md:w-44">
-          Top 5 peripheral
+    <div className="flex h-screen w-screen flex-col items-center justify-between border-2 border-slate-500 px-10 pt-24">
+      <section className="flex w-screen flex-col items-center border-2 border-green-500">
+        <p className="flex w-screen items-center justify-center border-2 border-pink-500">
+          Hero
+        </p>
+        <div className="flex w-screen items-center justify-center border-2 border-pink-500">
+          Searchbar
         </div>
-        <div className="h-56 border-2 border-purple-500 md:w-44">
-          Top 5 peripheral
-        </div>
-        <div className="h-56 border-2 border-purple-500 md:w-44">
-          Top 5 peripheral
-        </div>
-        <div className="h-56 border-2 border-purple-500 md:w-44">
-          Top 5 peripheral
-        </div>
-      </div>
-    </section>
+      </section>
+      <SnapCarousel products={topProducts} />
+    </div>
   );
 };
 
