@@ -21,14 +21,14 @@ const Navbar = () => {
             <MenuButtons link={'/players'}>Players</MenuButtons>
           </div>
         </div>
+        { dropDownOpen &&
+          <div className='flex flex-col items-center justify-start py-4    border-2 border-black'>
+            <MenuButtons link={'/products'}>Products</MenuButtons>
+            <MenuButtons link={'/about'}>About</MenuButtons>
+            <MenuButtons link={'/players'}>Players</MenuButtons>
+          </div>
+        }
       </nav>
-      { dropDownOpen &&
-        <div className='flex flex-col items-center justify-start border-2 border-black'>
-          <MenuButtons link={'/products'}>Products</MenuButtons>
-          <MenuButtons link={'/about'}>About</MenuButtons>
-          <MenuButtons link={'/players'}>Players</MenuButtons>
-        </div>
-      }
     </>
   )
 }
