@@ -1,3 +1,5 @@
+const {fontFamily} = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -5,7 +7,20 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "off-white": "#FEFEFE",
+        "purple-main": "#c42bf0",
+        "purple-light": "#D461F4",
+        "purple-dark": "#AC0FD9"
+      },
+      fontFamily: {
+        sans: ['var(--font-roboto)', ...fontFamily.sans]
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('prettier-plugin-tailwindcss')
+  ],
 }
