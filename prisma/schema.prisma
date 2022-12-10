@@ -31,9 +31,10 @@ model Games {
 }
 
 model Teams {
-  id      String    @id @default(auto()) @map("_id") @db.ObjectId
-  name    String    @unique
-  Players Players[]
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String?   @unique
+  teamImage String?   @unique
+  Players   Players[]
 }
 
 // model Players_Games {
@@ -67,50 +68,77 @@ model Players {
 
 model Player_Peripherals {
   id         String    @id @default(auto()) @map("_id") @db.ObjectId
-  players    Players   @relation(fields: [playerId], references: [id])
-  playerId   String    @db.ObjectId
+  players    Players?  @relation(fields: [playerId], references: [id])
+  playerId   String?   @db.ObjectId
   mouse      Mouse?    @relation(fields: [mouseId], references: [id])
   mouseId    String?   @db.ObjectId
   keyboard   Keyboard? @relation(fields: [keyboardId], references: [id])
   keyboardId String?   @db.ObjectId
   monitor    Monitors? @relation(fields: [monitorId], references: [id])
   monitorId  String?   @db.ObjectId
+  mousePad   Mousepad? @relation(fields: [mousePadId], references: [id])
+  mousePadId String?   @db.ObjectId
+  Headset    Headset?  @relation(fields: [headsetId], references: [id])
+  headsetId  String?   @db.ObjectId
 }
 
 model Brands {
   id       String     @id @default(auto()) @map("_id") @db.ObjectId
-  name     String
+  name     String?
+  logo     String?
   Mouse    Mouse[]
   Keyboard Keyboard[]
   Monitors Monitors[]
+  MousePad Mousepad[]
+  Headset  Headset[]
 }
 
 model Mouse {
   id                 String               @id @default(auto()) @map("_id") @db.ObjectId
   brand              Brands?              @relation(fields: [brandsID], references: [id])
   brandsID           String?              @db.ObjectId
-  product_name       String
-  shop_link          String
-  description        String
+  product_name       String               @unique
+  shop_link          String?
+  description        String?
+  player_peripherals Player_Peripherals[]
+}
+
+model Mousepad {
+  id                 String               @id @default(auto()) @map("_id") @db.ObjectId
+  brand              Brands?              @relation(fields: [brandsID], references: [id])
+  brandsID           String?              @db.ObjectId
+  product_name       String               @unique
+  shop_link          String?
+  description        String?
+  player_peripherals Player_Peripherals[]
+}
+
+model Headset {
+  id                 String               @id @default(auto()) @map("_id") @db.ObjectId
+  brand              Brands?              @relation(fields: [brandsID], references: [id])
+  brandsID           String?              @db.ObjectId
+  product_name       String               @unique
+  shop_link          String?
+  description        String?
   player_peripherals Player_Peripherals[]
 }
 
 model Keyboard {
   id                 String               @id @default(auto()) @map("_id") @db.ObjectId
-  product_name       String
+  product_name       String               @unique
   brand              Brands?              @relation(fields: [brandsID], references: [id])
   brandsID           String?              @db.ObjectId
-  shop_link          String
-  description        String
+  shop_link          String?
+  description        String?
   player_peripherals Player_Peripherals[]
 }
 
 model Monitors {
   id                 String               @id @default(auto()) @map("_id") @db.ObjectId
-  product_name       String
+  product_name       String               @unique
   brand              Brands?              @relation(fields: [brandsID], references: [id])
   brandsID           String?              @db.ObjectId
-  shop_link          String
-  description        String
+  shop_link          String?
+  description        String?
   player_peripherals Player_Peripherals[]
 }

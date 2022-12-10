@@ -15,7 +15,13 @@ const prisma = new PrismaClient();
 //     gamesIDs: '6391143d8f2ae6a25db6a6a3'
 //   }
 // })
-const players = await prisma.players.findMany();
+const players = await prisma.teams.findMany({
+  where: {
+    name: "Team Liquid"
+  }
+
+}
+);
   return {
     props: {
       initialPlayers: players
