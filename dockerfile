@@ -1,6 +1,6 @@
 FROM node:18
 # RUN apk add --no-cache libc6-compat openssl openssl-dev
-# RUN npm i -g pnpm
+RUN npm i -g pnpm
 WORKDIR /app
 
 
@@ -17,7 +17,7 @@ COPY tsconfig.json ./
 COPY .env ./
 COPY . .
 RUN npm install
-# RUN pnpm install -r
+RUN pnpm install -r
 
 RUN npx prisma generate
 
