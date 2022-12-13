@@ -25,7 +25,5 @@ a {
   html {
     color-scheme: dark;
   }
-  body {
-    @apply bg-off-white text-black
-  }
+  
 }
