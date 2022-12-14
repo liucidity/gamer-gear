@@ -53,15 +53,15 @@ export function Games ({games,players}:Props) {
       <GameCard 
       gameImageAlt='fortnite.jpg' 
       gameImageSrc='/fortnite.jpg' 
-      style='gamecard-image object-right'/>
+      style='gamecard-image object-[95%]'/>
       <GameCard 
       gameImageAlt='ow.png' 
       gameImageSrc='/ow.png' 
-      style='gamecard-image object-[35%]'/>
+      style='gamecard-image object-[30%]'/>
       <GameCard 
       gameImageAlt='apex.png' 
       gameImageSrc='/apex.png'
-      style='gamecard-image'/>
+      style='gamecard-image object-[35%]'/>
       
     </section>
   );
