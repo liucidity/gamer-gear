@@ -15,9 +15,9 @@ const roboto = Roboto({
 const Layout = ({ children }: any) => {
   return (
     <>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <main className={`${roboto.variable} font-sans w-screen h-screen`}>{ children }</main>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </>
   )
 }
