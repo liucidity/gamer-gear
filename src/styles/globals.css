@@ -41,4 +41,7 @@ a {
   .gamecard:hover .gamecard-image{
     @apply scale-110;
   }
+  .logo-text {
+    @apply object-scale-down object-bottom
+  }
 }
