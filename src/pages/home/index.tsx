@@ -1,5 +1,7 @@
 import React from "react";
 import SnapCarousel from "../../components/SnapCarousel";
+import { GameCard } from "../../components/Widgets/GameCard";
+import { Games } from "../../components/Widgets/Games"
 import Searchbar from "../../components/Widgets/Searchbar";
 
 // ---- Type Definitions
@@ -42,6 +44,7 @@ const Home = ({ children }: Props) => {
         </header>
         <SnapCarousel products={topProducts} />
       </section>
+      <Games/>
     </div>
   );
 };

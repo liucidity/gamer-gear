@@ -29,3 +29,9 @@ a {
     @apply bg-off-white text-black
   }
 }
+
+@layer components {
+  .gamecard {
+    @apply w-[10em] h-[13em] relative 
+  }
+}

@@ -20,10 +20,10 @@ datasource db {
 // }
 
 model Games {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  game_name String @unique
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  game_name String   @unique
   publisher String
-  release   String
+  release   DateTime
   // game_players Players_Games[]
 
   players    Players[] @relation(fields: [playersIDs], references: [id])
