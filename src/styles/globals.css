@@ -32,6 +32,13 @@ a {
 
 @layer components {
   .gamecard {
-    @apply w-[10em] h-[13em] relative 
+    @apply w-[10em] h-[13em] relative m-4 flex items-center justify-center  rounded-xl overflow-hidden
+  }
+  .gamecard-image {
+    @apply absolute w-full h-full object-cover rounded-xl transition-all duration-500 ease-in-out transform bg-center bg-cover
+  }
+
+  .gamecard:hover .gamecard-image{
+    @apply scale-110;
   }
 }

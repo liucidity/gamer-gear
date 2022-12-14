@@ -8,7 +8,38 @@ import Searchbar from "../../components/Widgets/Searchbar";
 // ** If the Home component below accepts more props, add them and their respective types in this Type declaration, and then destructure below **
 type Props = {
   children: any;
+  players:any;
+  games:any
 };
+
+
+import {PrismaClient} from '@prisma/client';
+
+
+
+
+
+// export interface IAppProps {
+// }
+
+export async function getServerSideProps() {
+const prisma = new PrismaClient();
+
+const games = await prisma.games.findMany();
+try {
+  const players = await prisma.players.findMany();
+  console.log(players)
+  return {
+    props: {
+      games:JSON.parse(JSON.stringify(games)),
+      players:players
+    }
+  }
+} catch (e) {
+  console.log(e)
+}
+
+}
 
 const topProducts = [
   {
@@ -29,7 +60,8 @@ const topProducts = [
   },
 ];
 
-const Home = ({ children }: Props) => {
+const Home = ({ children,players,games}: Props) => {
+  console.log({players,games})
   return (
     <div className="flex h-full w-full flex-col items-center justify-between pt-24">
       <header className="flex h-52 w-[90%] flex-col items-center border-2 border-purple-main">
@@ -44,7 +76,7 @@ const Home = ({ children }: Props) => {
         </header>
         <SnapCarousel products={topProducts} />
       </section>
-      <Games/>
+      <Games games={games} players={players}/>
     </div>
   );
 };
