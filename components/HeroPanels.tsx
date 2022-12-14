@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 
 type Props = {};
 
@@ -14,9 +14,18 @@ const HeroPanels = ({}: Props) => {
     console.log(isHovered);
   };
 
+  const controls = useAnimation();
+  const mouseEnterControls = () => {
+    controls.start("hover");
+  };
+  const mouseLeaveControls = () => {
+    controls.start("initial");
+  };
+
   const bannerFM = {
     hover: {
       x: "-100%",
+      
     },
     initial: {
       x: "0",
@@ -40,6 +49,24 @@ const HeroPanels = ({}: Props) => {
             className="flex h-full w-full flex-shrink-0 bg-blue-500"
             variants={bannerFM}
             animate={isHovered ? "hover" : "initial"}
+          >
+            <button onClick={() => console.log("click")}>click here</button>
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className="flex h-full w-full overflow-hidden border-2 border-purple-main md:w-1/3"
+          onMouseEnter={mouseEnterControls}
+          onMouseLeave={mouseLeaveControls}
+        >
+          <motion.div
+            className="flex h-full w-full flex-shrink-0 bg-red-500"
+            variants={bannerFM}
+            animate={controls}
+          ></motion.div>
+          <motion.div
+            className="flex h-full w-full flex-shrink-0 bg-blue-500"
+            variants={bannerFM}
+            animate={controls}
           >
             <button onClick={() => console.log("click")}>click here</button>
           </motion.div>
