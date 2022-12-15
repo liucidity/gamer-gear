@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {PrismaClient} from '@prisma/client';
-import { GameCard } from './GameCard';
+import { GameCard } from '../Widgets/GameCard';
 
 
 
@@ -45,23 +45,45 @@ export function Games ({games,players}:Props) {
       <GameCard 
       gameImageAlt='csgo2.jpg' 
       gameImageSrc='/csgo2.jpg' 
-      style='gamecard-image object-[70%]'/>
+      imageStyle='gamecard-image object-[70%]'
+      gameLogoSrc='/csgo_logo.png'
+      gameLogoAlt='/csgo_logo.png'
+      textStyle='logo-text'
+      gameName='CounterStrike'
+      />
       <GameCard 
       gameImageAlt='valorant.jpg' 
       gameImageSrc='/valorant.jpg' 
-      style='gamecard-image'/>
+      imageStyle='gamecard-image'
+      gameLogoSrc='/val_logo.png'
+      gameLogoAlt='/val_logo.png'
+      textStyle='object-cover'
+      gameName='Valorant'/>
       <GameCard 
       gameImageAlt='fortnite.jpg' 
       gameImageSrc='/fortnite.jpg' 
-      style='gamecard-image object-[95%]'/>
+      imageStyle='gamecard-image object-[95%]'
+      gameLogoSrc='/fortnite_logo.png'
+      gameLogoAlt='/fortnite_logo.png'
+      textStyle='logo-text'
+      gameName='Fortnite'
+      />
       <GameCard 
       gameImageAlt='ow.png' 
       gameImageSrc='/ow.png' 
-      style='gamecard-image object-[30%]'/>
+      imageStyle='gamecard-image object-[30%]'
+      gameLogoSrc='/ow_logo.png'
+      gameLogoAlt='/ow_logo.png'
+      textStyle='logo-text'
+      gameName='Overwatch'/>
       <GameCard 
       gameImageAlt='apex.png' 
       gameImageSrc='/apex.png'
-      style='gamecard-image object-[35%]'/>
+      imageStyle='gamecard-image object-[35%]'
+      gameLogoSrc='/apex_logo.png'
+      gameLogoAlt='/apex_logo.png'
+      textStyle='logo-text'
+      gameName='Apex Legends'/>
       
     </section>
   );

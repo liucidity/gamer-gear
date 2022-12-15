@@ -13,7 +13,8 @@ module.exports = {
         "black-main": "#282828",
         "purple-main": "#c42bf0",
         "purple-light": "#D461F4",
-        "purple-dark": "#AC0FD9"
+        "purple-dark": "#AC0FD9",
+        "blue": "#4361EE"
       },
       fontFamily: {
         sans: ['var(--font-roboto)', ...fontFamily.sans]

@@ -1,7 +1,7 @@
 import React from "react";
 import SnapCarousel from "../../components/SnapCarousel";
 import { GameCard } from "../../components/Widgets/GameCard";
-import { Games } from "../../components/Widgets/Games"
+import { Games } from "../../components/Sections/Games"
 import Searchbar from "../../components/Widgets/Searchbar";
 
 // ---- Type Definitions
@@ -9,7 +9,8 @@ import Searchbar from "../../components/Widgets/Searchbar";
 type Props = {
   children: any;
   players:any;
-  games:any
+  games:any;
+  player:any
 };
 
 
@@ -24,6 +25,26 @@ import {PrismaClient} from '@prisma/client';
 
 export async function getServerSideProps() {
 const prisma = new PrismaClient();
+const player = await prisma.players.findMany({
+  where: {
+    username: {
+      contains: "eLecTronic",
+      mode: 'insensitive'
+    }
+  },
+  include: {
+    player_peripherals: {
+      include: {
+        mouse: true,
+        keyboard: true,
+        Headset: true,
+        mousePad: true,
+        monitor: true,
+
+      }
+    }
+  }
+})
 
 const games = await prisma.games.findMany();
 try {
@@ -32,7 +53,8 @@ try {
   return {
     props: {
       games:JSON.parse(JSON.stringify(games)),
-      players:players
+      players:players,
+      player:player[0]
     }
   }
 } catch (e) {
@@ -72,8 +94,9 @@ const topProducts = [
   },
 ];
 
-const Home = ({ children,players,games}: Props) => {
-  console.log({players,games})
+const Home = ({ children,players,games, player}: Props) => {
+  console.log({players,games, player})
+  console.log(player.player_peripherals[0])
   return (
     <div className="flex h-full w-full flex-col items-center justify-between pt-24">
       <header className="flex h-52 w-[90%] flex-col items-center border-2 border-purple-main md:w-5/6">
@@ -92,6 +115,7 @@ const Home = ({ children,players,games}: Props) => {
         </header>
         <SnapCarousel products={topProducts} />
       </section>
+      <ProductRanking/>
       <Games games={games} players={players}/>
     </div>
   );
