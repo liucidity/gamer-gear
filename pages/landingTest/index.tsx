@@ -1,12 +1,16 @@
-import React from 'react'
-import HeroPanels from '../../components/HeroPanels';
+import React from "react";
+import HeroPanels from "../../components/HeroPanels";
 
 const LandingPage = () => {
   return (
-    <section className='h-full w-full flex flex-col items-center'>
-      <HeroPanels />
+    <section className="flex h-full w-full flex-col items-center">
+      <header className="flex h-full w-full md:w-5/6">
+        <HeroPanels />
+        <HeroPanels />
+        <HeroPanels />
+      </header>
     </section>
-  )
-}
+  );
+};
 
 export default LandingPage;
