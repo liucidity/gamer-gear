@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {PrismaClient} from '@prisma/client';
-import { GameCard } from './GameCard';
+import { GameCard } from '../Widgets/GameCard';
 
 
 
@@ -64,6 +64,7 @@ export function Games ({games,players}:Props) {
       gameImageSrc='/fortnite.jpg' 
       imageStyle='gamecard-image object-[95%]'
       gameLogoSrc='/fortnite_logo.png'
+      gameLogoAlt='/fortnite_logo.png'
       textStyle='logo-text'
       gameName='Fortnite'
       />
