@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
-import AgentTestImage from "../public/assets/agent_test_image.png";
+import AgentTestImage from "../../public/assets/agent_test_image.png";
 import Image from "next/image";
 
 // ---- Type Definitions ----

@@ -3,6 +3,7 @@ import SnapCarousel from "../../components/SnapCarousel";
 import { GameCard } from "../../components/Widgets/GameCard";
 import { Games } from "../../components/Sections/Games"
 import Searchbar from "../../components/Widgets/Searchbar";
+import {ProductRanking} from "../../components/Sections/ProductRanking"
 
 // ---- Type Definitions
 // ** If the Home component below accepts more props, add them and their respective types in this Type declaration, and then destructure below **
@@ -15,8 +16,25 @@ type Props = {
 
 
 import {PrismaClient} from '@prisma/client';
+import HeroSection from "../../components/HeroSection";
 
+type PlayerObjectList = { username: string; id: number }[];
 
+// ---- Data ----
+let playersData:PlayerObjectList = [
+  {
+    id: 1,
+    username: "TenZ",
+  },
+  {
+    id: 2,
+    username: "S1mple",
+  },
+  {
+    id: 3,
+    username: "NiKo",
+  },
+];
 
 
 
@@ -40,7 +58,7 @@ const player = await prisma.players.findMany({
         Headset: true,
         mousePad: true,
         monitor: true,
-
+        
       }
     }
   }
@@ -99,6 +117,7 @@ const Home = ({ children,players,games, player}: Props) => {
   console.log(player.player_peripherals[0])
   return (
     <div className="flex h-full w-full flex-col items-center justify-between pt-24">
+      <HeroSection playersData={playersData}/>
       <header className="flex h-52 w-[90%] flex-col items-center border-2 border-purple-main md:w-5/6">
         <h1 className="prose-sm px-5 md:prose-xl">GAMERGEAR</h1>
         <h2>Test Tagline For Hero Section</h2>
