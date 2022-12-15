@@ -20,16 +20,16 @@ const Navbar = () => {
             DropDown
           </button>
           <div className="hidden md:flex md:items-center">
-            <MenuButtons link={"/products"}>PRODUCTS</MenuButtons>
-            <MenuButtons link={"/games"}>GAMES</MenuButtons>
-            <MenuButtons link={"/players"}>PLAYERS</MenuButtons>
+            <MenuButtons link={"/products"}>Products</MenuButtons>
+            <MenuButtons link={"/games"}>Games</MenuButtons>
+            <MenuButtons link={"/players"}>Players</MenuButtons>
           </div>
         </div>
         {dropDownOpen && (
           <div className="flex flex-col items-center justify-start py-4">
-            <MenuButtons link={"/products"}>PRODUCTS</MenuButtons>
-            <MenuButtons link={"/games"}>GAMES</MenuButtons>
-            <MenuButtons link={"/players"}>PLAYERS</MenuButtons>
+            <MenuButtons link={"/products"}>Products</MenuButtons>
+            <MenuButtons link={"/games"}>Games</MenuButtons>
+            <MenuButtons link={"/players"}>Players</MenuButtons>
           </div>
         )}
       </nav>

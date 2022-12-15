@@ -6,15 +6,14 @@ import {PrismaClient} from '@prisma/client';
 
 
 
-export async function getServerSideProps() {
-const prisma = new PrismaClient();
+// export async function getServerSideProps() {
+// const prisma = new PrismaClient();
 
 // const player = await prisma.contact.create({
 //   data: {
 //     name: "hi"
 //   }
 // })
-
 //   const contacts = await prisma.contact.findMany();
 //   return {
 //     props: {
@@ -22,7 +21,6 @@ const prisma = new PrismaClient();
 //     }
 //   };
 // }
-
 const players = await prisma.teams.findMany({
   where: {
     name: "Team Liquid"
@@ -36,6 +34,7 @@ const players = await prisma.teams.findMany({
     }
   };
 }
+
 export default function Home({}:any) {
   return (
     <div>

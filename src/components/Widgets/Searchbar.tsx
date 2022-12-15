@@ -6,7 +6,7 @@ const Searchbar = () => {
       {/* Turn the search bar into form with input tags later */}
       <div className="flex h-full w-full items-center">
         <input
-          className="h-full w-full rounded-2xl border-none bg-white p-5 pl-11 font-light text-black placeholder-gray-400 ring-2 ring-white drop-shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-light focus:drop-shadow-none"
+          className="h-full w-full rounded-2xl border-none bg-white p-5 pl-11 font-light placeholder-gray-400 ring-2 ring-white drop-shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-light focus:drop-shadow-none"
           type="search"
           placeholder="Search Products, Players & Teams..."
         />
