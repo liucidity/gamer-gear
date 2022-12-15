@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  /* Gets rid of bottom scrollbar - apparently a glitch caused by vertical scrollbar? */
+  overflow-x: hidden !important;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-off-white text-black-main
+  }
+}
+
+@layer components {
+  .gamecard {
+    @apply w-[10em] h-[13em] relative m-4 flex items-center justify-center  rounded-xl overflow-hidden
+  }
+  .gamecard-image {
+    @apply absolute w-full h-full object-cover rounded-xl transition-all duration-500 ease-in-out transform bg-center bg-cover
+  }
+
+  .gamecard:hover .gamecard-image{
+    @apply scale-110;
+  }
+  .logo-text {
+    @apply object-scale-down object-bottom
+  }
+}
