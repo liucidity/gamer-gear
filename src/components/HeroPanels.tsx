@@ -9,7 +9,7 @@ type Props = {
   key: string;
   username: string;
   photoURL: string;
-  playerGear: {}[];
+  playerGear: any;
 };
 
 // ---- Main Component ----
@@ -29,7 +29,7 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
         type: "tween",
         duration: 0.6,
         ease: "easeInOut",
-      }
+      },
     },
     initial: {
       x: "0",
@@ -37,10 +37,21 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
         type: "tween",
         duration: 0.6,
         ease: "easeInOut",
-      }
+      },
     },
-
   };
+  // ---- Data ----
+  const { keyboard, mouse, headset, monitor } = playerGear[0];
+  const playerGearArray = [keyboard, mouse, headset, monitor];
+  // const playerGearArray = [keyboard]
+  console.log(playerGearArray);
+
+  const bannerProductCards = playerGearArray.map((gear) => {
+    
+    return (
+      <BannerProductCard key={gear.id} product_name={gear.product_name} />
+    )
+  });
 
   return (
     <motion.section
@@ -66,14 +77,11 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
         </h1>
       </motion.div>
       <motion.div
-        className="bg-blue-500 hidden h-full w-full flex-shrink-0 md:flex flex-col items-center justify-evenly"
+        className="hidden h-full w-full flex-shrink-0 flex-col items-center justify-evenly md:flex"
         variants={bannerFM}
         animate={controls}
       >
-        <BannerProductCard />
-        <BannerProductCard />
-        <BannerProductCard />
-        <BannerProductCard />
+        {bannerProductCards}
       </motion.div>
     </motion.section>
   );
