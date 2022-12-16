@@ -1,22 +1,42 @@
 import React from "react";
-import HeroPanels from './HeroPanels';
+import HeroPanels from "./HeroPanels";
 // ---- Type Declarations ----
-type PlayerObjectList = { username: string; id: number }[];
+type BannerPlayers = {
+  first_name: null;
+  last_name: null;
+  gamesIDs: any;
+  id: string;
+  picture: string;
+  player_peripherals: {}[];
+  teamID: string;
+  username: string;
+}[];
 type Props = {
-  playersData:PlayerObjectList;
-}
+  bannerPlayers: BannerPlayers;
+};
 
 // ---- Main Landing Page Component ----
-const HeroSection = ({playersData}:Props) => {
+const HeroSection = ({ bannerPlayers }: Props) => {
+  console.log(`from HeroSection `, bannerPlayers);
+
   // ---- Helpers ----
-  const mapPlayerBanners = playersData.map(({ id, username }) => {
-    return <HeroPanels key={id} username={username} />;
-  });
+  const mapBannerPlayers = bannerPlayers.map(
+    ({ id, username, picture, player_peripherals }) => {
+      return (
+        <HeroPanels
+          key={id}
+          username={username}
+          photoURL={picture}
+          playerGear={player_peripherals}
+        />
+      );
+    }
+  );
 
   return (
     <section className="flex h-full w-full flex-col items-center justify-end bg-black-main pb-5">
       <header id="banner-container" className="flex h-5/6 w-full md:w-5/6">
-        {mapPlayerBanners}
+        {mapBannerPlayers}
       </header>
     </section>
   );
