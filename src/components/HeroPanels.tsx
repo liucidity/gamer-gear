@@ -11,7 +11,6 @@ type Props = {
 
 // ---- Main Component ----
 const HeroPanels = ({ key, username }: Props) => {
-  
   // ---- Framer Motion ----
   const controls = useAnimation();
   const mouseEnterControls = () => {
@@ -23,17 +22,28 @@ const HeroPanels = ({ key, username }: Props) => {
   const bannerFM = {
     hover: {
       x: "-100%",
+      transition: {
+        type: "tween",
+        duration: 0.6,
+        ease: "easeInOut",
+      }
     },
     initial: {
       x: "0",
+      transition: {
+        type: "tween",
+        duration: 0.6,
+        ease: "easeInOut",
+      }
     },
+
   };
 
   return (
     <motion.section
       key={key}
       id="banner_items-container"
-      className="flex h-full w-full flex-shrink-0 overflow-x-hidden border-slate-600 last-of-type:border-r-0 md:w-1/3 md:border-r-2"
+      className="flex h-full w-full flex-shrink-0 overflow-x-hidden border-black-main last-of-type:border-r-0 md:w-1/3 md:border-x-2"
       onMouseEnter={mouseEnterControls}
       onMouseLeave={mouseLeaveControls}
     >
@@ -53,7 +63,7 @@ const HeroPanels = ({ key, username }: Props) => {
         </h1>
       </motion.div>
       <motion.div
-        className="hidden h-full w-full flex-shrink-0 bg-blue-500 md:flex"
+        className="bg-blue-500 hidden h-full w-full flex-shrink-0 md:flex"
         variants={bannerFM}
         animate={controls}
       >
