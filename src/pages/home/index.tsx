@@ -141,7 +141,7 @@ const Home = ({ children, allPlayers, games, bannerPlayers, mouseRanking }: Prop
   return (
     <>
     {/* <div className="flex h-full w-full flex-col items-center justify-between pt-24"> */}
-      <HeroSection playersData={playersData} />
+      <HeroSection bannerPlayers={bannerPlayers} />
       {/* <header className="flex h-52 w-[90%] flex-col items-center border-2 border-purple-main md:w-5/6">
         <h1 className="prose-sm px-5 md:prose-xl">GAMERGEAR</h1>
         <h2>Test Tagline For Hero Section</h2>
