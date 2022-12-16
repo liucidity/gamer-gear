@@ -5,12 +5,14 @@ import Image from "next/image";
 
 // ---- Type Definitions ----
 type Props = {
-  key: number;
+  key: string;
   username: string;
+  photoURL: string;
+  playerGear: {}[];
 };
 
 // ---- Main Component ----
-const HeroPanels = ({ key, username }: Props) => {
+const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
   // ---- Framer Motion ----
   const controls = useAnimation();
   const mouseEnterControls = () => {
@@ -55,7 +57,7 @@ const HeroPanels = ({ key, username }: Props) => {
       >
         <Image
           src={AgentTestImage} // should be prop
-          alt="agent-silouhette" // should be prop
+          alt={`${username}-pic`}
           style={{ objectFit: "cover", height: "auto" }}
         ></Image>
         <h1 className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 p-2 text-center font-sans text-3xl font-extrabold text-white">
