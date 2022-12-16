@@ -2,6 +2,7 @@ import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import AgentTestImage from "../../public/assets/agent_test_image.png";
 import Image from "next/image";
+import BannerProductCard from "./Widgets/BannerProductCard";
 
 // ---- Type Definitions ----
 type Props = {
@@ -65,11 +66,14 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
         </h1>
       </motion.div>
       <motion.div
-        className="bg-blue-500 hidden h-full w-full flex-shrink-0 md:flex"
+        className="bg-blue-500 hidden h-full w-full flex-shrink-0 md:flex flex-col items-center justify-evenly"
         variants={bannerFM}
         animate={controls}
       >
-        <button onClick={() => console.log("click")}>click here</button>
+        <BannerProductCard />
+        <BannerProductCard />
+        <BannerProductCard />
+        <BannerProductCard />
       </motion.div>
     </motion.section>
   );
