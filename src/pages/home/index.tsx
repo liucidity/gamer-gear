@@ -135,18 +135,19 @@ const topProducts = [
 ];
 
 const Home = ({ children, allPlayers, games, bannerPlayers, mouseRanking }: Props) => {
-  console.log("bannerPlayers: ", bannerPlayers);
-  console.table( mouseRanking);
+  console.table(bannerPlayers);
+  // console.table( mouseRanking);
   
   return (
-    <div className="flex h-full w-full flex-col items-center justify-between pt-24">
+    <>
+    {/* <div className="flex h-full w-full flex-col items-center justify-between pt-24"> */}
       <HeroSection playersData={playersData} />
-      <header className="flex h-52 w-[90%] flex-col items-center border-2 border-purple-main md:w-5/6">
+      {/* <header className="flex h-52 w-[90%] flex-col items-center border-2 border-purple-main md:w-5/6">
         <h1 className="prose-sm px-5 md:prose-xl">GAMERGEAR</h1>
         <h2>Test Tagline For Hero Section</h2>
-      </header>
-      <Searchbar />
-      <section className="mt-5 flex w-[90%] flex-col md:w-5/6 ">
+      </header> */}
+      {/* <Searchbar /> */}
+      {/* <section className="mt-5 flex w-[90%] flex-col md:w-5/6 ">
         <header className="flex items-center justify-between ">
           <h1 className="font-sans text-2xl font-bold antialiased md:text-3xl">
             Top Products
@@ -156,10 +157,11 @@ const Home = ({ children, allPlayers, games, bannerPlayers, mouseRanking }: Prop
           </a>
         </header>
         <SnapCarousel products={topProducts} />
-      </section>
+      </section> */}
       <ProductRanking />
       <Games games={games} players={allPlayers} />
-    </div>
+    {/* </div> */}
+    </>
   );
 };
 
