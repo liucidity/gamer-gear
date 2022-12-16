@@ -1,27 +1,27 @@
 import React from "react";
+import { PrismaClient } from "@prisma/client";
+// ---- Components ----
 import SnapCarousel from "../../components/SnapCarousel";
 import { GameCard } from "../../components/Widgets/GameCard";
-import { Games } from "../../components/Sections/Games"
+import { Games } from "../../components/Sections/Games";
 import Searchbar from "../../components/Widgets/Searchbar";
-import {ProductRanking} from "../../components/Sections/ProductRanking"
+import { ProductRanking } from "../../components/Sections/ProductRanking";
+import HeroSection from "../../components/HeroSection";
 
 // ---- Type Definitions
 // ** If the Home component below accepts more props, add them and their respective types in this Type declaration, and then destructure below **
 type Props = {
   children: any;
-  players:any;
-  games:any;
-  player:any
+  allPlayers: any;
+  games: any;
+  bannerPlayers: any;
+  mouseRanking: any;
 };
-
-
-import {PrismaClient} from '@prisma/client';
-import HeroSection from "../../components/HeroSection";
 
 type PlayerObjectList = { username: string; id: number }[];
 
 // ---- Data ----
-let playersData:PlayerObjectList = [
+let playersData: PlayerObjectList = [
   {
     id: 1,
     username: "TenZ",
@@ -37,48 +37,70 @@ let playersData:PlayerObjectList = [
 ];
 
 
-
-// export interface IAppProps {
-// }
-
 export async function getServerSideProps() {
-const prisma = new PrismaClient();
-const player = await prisma.players.findMany({
-  where: {
-    username: {
-      contains: "eLecTronic",
-      mode: 'insensitive'
-    }
-  },
-  include: {
-    player_peripherals: {
-      include: {
-        mouse: true,
-        keyboard: true,
-        Headset: true,
-        mousePad: true,
-        monitor: true,
-        
+  const prisma = new PrismaClient();
+  const bannerPlayers = await prisma.players.findMany({
+    where: {
+      OR: [
+        {
+          username: {
+            equals: "S1mple",
+            mode: "insensitive",
+          },
+        },
+        {
+          username: {
+            equals: "TenZ",
+            mode: "insensitive",
+          },
+        },
+        {
+          username: {
+            equals: "shroud",
+            mode: "insensitive",
+          },
+        },
+      ],
+    },
+    include: {
+      player_peripherals: {
+        include: {
+          mouse: true,
+          keyboard: true,
+          headset: true,
+          mousePad: true,
+          monitor: true,
+        },
+      },
+    },
+  });
+
+  const mouseRanking = await prisma.mouse.findMany({
+    include: {
+      _count: {
+        select: {
+          player_peripherals: true
+        }
+      }
+    },
+    take: 10,
+    orderBy: {
+      player_peripherals: {
+       _count: 'desc' 
       }
     }
-  }
-})
+  })
 
-const games = await prisma.games.findMany();
-try {
-  const players = await prisma.players.findMany();
-  console.log(players)
+  const games = await prisma.games.findMany();
+  const allPlayers = await prisma.players.findMany();
   return {
     props: {
-      games:JSON.parse(JSON.stringify(games)),
-      players:players,
-      player:player[0]
-    }
-  }
-} catch (e) {
-  console.log(e)
-}
-
+      games: JSON.parse(JSON.stringify(games)),
+      allPlayers: allPlayers,
+      bannerPlayers: bannerPlayers,
+      mouseRanking
+    },
+  };
 }
 
 const topProducts = [
@@ -112,12 +134,13 @@ const topProducts = [
   },
 ];
 
-const Home = ({ children,players,games, player}: Props) => {
-  console.log({players,games, player})
-  console.log(player.player_peripherals[0])
+const Home = ({ children, allPlayers, games, bannerPlayers, mouseRanking }: Props) => {
+  console.log("bannerPlayers: ", bannerPlayers);
+  console.table( mouseRanking);
+  
   return (
     <div className="flex h-full w-full flex-col items-center justify-between pt-24">
-      <HeroSection playersData={playersData}/>
+      <HeroSection playersData={playersData} />
       <header className="flex h-52 w-[90%] flex-col items-center border-2 border-purple-main md:w-5/6">
         <h1 className="prose-sm px-5 md:prose-xl">GAMERGEAR</h1>
         <h2>Test Tagline For Hero Section</h2>
@@ -134,8 +157,8 @@ const Home = ({ children,players,games, player}: Props) => {
         </header>
         <SnapCarousel products={topProducts} />
       </section>
-      <ProductRanking/>
-      <Games games={games} players={players}/>
+      <ProductRanking />
+      <Games games={games} players={allPlayers} />
     </div>
   );
 };

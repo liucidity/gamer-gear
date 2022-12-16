@@ -78,7 +78,7 @@ model Player_Peripherals {
   monitorId  String?   @db.ObjectId
   mousePad   Mousepad? @relation(fields: [mousePadId], references: [id])
   mousePadId String?   @db.ObjectId
-  Headset    Headset?  @relation(fields: [headsetId], references: [id])
+  headset    Headset?  @relation(fields: [headsetId], references: [id])
   headsetId  String?   @db.ObjectId
 }
 
