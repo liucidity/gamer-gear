@@ -47,17 +47,20 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
   console.log(playerGearArray);
 
   const bannerProductCards = playerGearArray.map((gear, index) => {
-    
     return (
-      <BannerProductCard key={gear.id} product_name={gear.product_name} category={index} />
-    )
+      <BannerProductCard
+        key={gear.id}
+        product_name={gear.product_name}
+        category={index}
+      />
+    );
   });
 
   return (
     <motion.section
       key={key}
       id="banner_items-container"
-      className="flex h-full w-full flex-shrink-0 overflow-x-hidden border-black-main last-of-type:border-r-0 md:w-1/3 md:border-x-2"
+      className="flex h-full w-full flex-shrink-0 overflow-x-hidden overflow-y-hidden border-black-main last-of-type:border-r-0 md:w-1/3 md:border-x-2"
       onMouseEnter={mouseEnterControls}
       onMouseLeave={mouseLeaveControls}
     >
@@ -72,8 +75,10 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
           alt={`${username}-pic`}
           style={{ objectFit: "cover", height: "auto" }}
         ></Image>
-        <h1 className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 p-2 text-center font-sans text-3xl font-extrabold text-white">
-          PLAY LIKE {username}
+        <h1 className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 break-words p-2 text-center font-sans text-3xl font-extrabold text-white">
+          PLAY LIKE
+          <br />
+          {username}
         </h1>
       </motion.div>
       <motion.div
