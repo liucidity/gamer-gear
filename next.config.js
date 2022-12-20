@@ -10,6 +10,14 @@ const nextConfig = {
         permanent: true,
       }
     ]
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**prosettings.net',
+      }
+    ]
   }
 }
 

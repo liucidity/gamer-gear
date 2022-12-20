@@ -64,23 +64,26 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
       onMouseEnter={mouseEnterControls}
       onMouseLeave={mouseLeaveControls}
     >
-      <motion.div
+      <motion.span
         id="banner_items"
         className="relative flex h-full w-full flex-shrink-0 overflow-hidden"
         variants={bannerFM}
         animate={controls}
       >
         <Image
-          src={AgentTestImage} // should be prop
+          src={photoURL}
           alt={`${username}-pic`}
-          style={{ objectFit: "cover", height: "auto" }}
+          style={{ objectFit: "cover"}}
+          // width={800}
+          // height={1500}
+          fill
         ></Image>
         <h1 className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 break-words p-2 text-center font-sans text-3xl font-extrabold text-white">
           PLAY LIKE
           <br />
           {username}
         </h1>
-      </motion.div>
+      </motion.span>
       <motion.div
         className="hidden h-full w-full flex-shrink-0 flex-col items-center justify-evenly md:flex"
         variants={bannerFM}
