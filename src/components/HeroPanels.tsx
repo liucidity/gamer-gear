@@ -46,10 +46,10 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
   // const playerGearArray = [keyboard]
   console.log(playerGearArray);
 
-  const bannerProductCards = playerGearArray.map((gear) => {
+  const bannerProductCards = playerGearArray.map((gear, index) => {
     
     return (
-      <BannerProductCard key={gear.id} product_name={gear.product_name} />
+      <BannerProductCard key={gear.id} product_name={gear.product_name} category={index} />
     )
   });
 
