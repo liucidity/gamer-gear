@@ -10,7 +10,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="shadow-xl fixed inset-x-0 top-0 z-10 w-screen bg-gradient-to-br from-purple-light via-purple-main to-purple-dark px-6 md:px-14 py-5">
+      <nav className="fixed inset-x-0 top-0 z-10 w-screen bg-black-main px-6 md:px-14 py-5">
         <div className="flex justify-between md:justify-start">
           <Logo></Logo>
           <button

@@ -9,7 +9,6 @@ import { ProductRanking } from "../../components/Sections/ProductRanking";
 import HeroSection from "../../components/HeroSection";
 
 // ---- Type Definitions
-// ** If the Home component below accepts more props, add them and their respective types in this Type declaration, and then destructure below **
 type Props = {
   children: any;
   allPlayers: any;
@@ -19,25 +18,7 @@ type Props = {
   valorantPlayers: any;
 };
 
-type PlayerObjectList = { username: string; id: number }[];
-
 // ---- Data ----
-let playersData: PlayerObjectList = [
-  {
-    id: 1,
-    username: "TenZ",
-  },
-  {
-    id: 2,
-    username: "S1mple",
-  },
-  {
-    id: 3,
-    username: "NiKo",
-  },
-];
-
-
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
   const bannerPlayers = await prisma.players.findMany({
@@ -272,36 +253,6 @@ export async function getServerSideProps() {
   };
 }
 
-const topProducts = [
-  {
-    type: "Mouse",
-    id: "id1",
-  },
-  {
-    type: "Keyboard",
-    id: "id2",
-  },
-  {
-    type: "Monitor",
-    id: "id3",
-  },
-  {
-    type: "Headphones",
-    id: "id4",
-  },
-  {
-    type: "Headphones",
-    id: "id4",
-  },
-  {
-    type: "Headphones",
-    id: "id4",
-  },
-  {
-    type: "Headphones",
-    id: "id4",
-  },
-];
 
 const Home = ({ children, allPlayers, games, bannerPlayers, productRanking, valorantPlayers }: Props) => {
   // console.log("bannerPlayers: ", bannerPlayers);
@@ -315,6 +266,7 @@ const Home = ({ children, allPlayers, games, bannerPlayers, productRanking, valo
       <Games games={games} players={allPlayers} />
       <ProductRanking productRanking={productRanking} />
     </div>
+
   );
 };
 
