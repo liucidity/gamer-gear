@@ -255,16 +255,13 @@ export async function getServerSideProps() {
 
 
 const Home = ({ children, allPlayers, games, bannerPlayers, productRanking, valorantPlayers }: Props) => {
-  // console.log("bannerPlayers: ", bannerPlayers);
-  // console.table( productRanking);
-  console.table({valorantPlayers});
   
   return (
-    <div className="flex h-full w-full flex-col items-center justify-between pt-24">
-      <HeroSection playersData={playersData} />
+    <div className="flex h-full w-full flex-col items-center justify-between">
+      <HeroSection bannerPlayers={bannerPlayers} />
     
-      <Games games={games} players={allPlayers} />
-      <ProductRanking productRanking={productRanking} />
+      {/* <Games games={games} players={allPlayers} /> */}
+      {/* <ProductRanking productRanking={productRanking} /> */}
     </div>
 
   );
