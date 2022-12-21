@@ -1,8 +1,7 @@
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
-import AgentTestImage from "../../public/assets/agent_test_image.png";
 import Image from "next/image";
-import BannerProductCard from "./Widgets/BannerProductCard";
+import BannerPlayerProductCard from "./BannerPlayerProductCard";
 
 // ---- Type Definitions ----
 type Props = {
@@ -43,18 +42,6 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
   // ---- Data ----
   const { keyboard, mouse, headset, monitor } = playerGear[0];
   const playerGearArray = [keyboard, mouse, headset, monitor];
-  // const playerGearArray = [keyboard]
-  console.log(playerGearArray);
-
-  const bannerProductCards = playerGearArray.map((gear, index) => {
-    return (
-      <BannerProductCard
-        key={gear.id}
-        product_name={gear.product_name}
-        category={index}
-      />
-    );
-  });
 
   return (
     <motion.section
@@ -74,8 +61,6 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
           src={photoURL}
           alt={`${username}-pic`}
           style={{ objectFit: "cover"}}
-          // width={800}
-          // height={1500}
           fill
         ></Image>
         <h1 className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 break-words p-2 text-center font-sans text-3xl font-extrabold text-white">
@@ -85,11 +70,11 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
         </h1>
       </motion.span>
       <motion.div
-        className="hidden h-full w-full flex-shrink-0 flex-col items-center justify-evenly md:flex"
+        className="hidden h-full w-full flex-shrink-0 flex-col items-center justify-evenly md:flex p-2"
         variants={bannerFM}
         animate={controls}
       >
-        {bannerProductCards}
+        <BannerPlayerProductCard photoURL={photoURL} playerGearArray={playerGearArray}/>
       </motion.div>
     </motion.section>
   );
