@@ -40,8 +40,8 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
     },
   };
   // ---- Data ----
-  const { keyboard, mouse, headset, monitor } = playerGear[0];
-  const playerGearArray = [keyboard, mouse, headset, monitor];
+  const { keyboard, mouse, headset} = playerGear[0];
+  const playerGearArray = [keyboard, mouse, headset];
 
   return (
     <motion.section
@@ -74,7 +74,7 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
         variants={bannerFM}
         animate={controls}
       >
-        <BannerPlayerProductCard photoURL={photoURL} playerGearArray={playerGearArray}/>
+        <BannerPlayerProductCard photoURL={photoURL} playerGearArray={playerGearArray} username={username}/>
       </motion.div>
     </motion.section>
   );
