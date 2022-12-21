@@ -20,14 +20,14 @@ datasource db {
 // }
 
 model Games {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  game_name String   @unique
-  publisher String
-  release   DateTime
-  // game_players Players_Games[]
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  game_name     String          @unique
+  publisher     String
+  release       DateTime
+  players_games Players_Games[]
 
-  players    Players[] @relation(fields: [playersIDs], references: [id])
-  playersIDs String[]  @db.ObjectId
+  // players    Players[] @relation(fields: [playersIDs], references: [id])
+  // playersIDs String[]  @db.ObjectId
 }
 
 model Teams {
@@ -37,13 +37,13 @@ model Teams {
   Players   Players[]
 }
 
-// model Players_Games {
-//   id       String  @id @default(auto()) @map("_id") @db.ObjectId
-//   game     Games   @relation(fields: [gameId], references: [id]) 
-//   gameId   String  @db.ObjectId @unique
-//   player   Players @relation(fields: [playerId], references: [id])
-//   playerId String  @db.ObjectId
-// }
+model Players_Games {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  game      Games   @relation(fields: [gameId], references: [id])
+  gameId    String  @db.ObjectId
+  player    Players @relation(fields: [player_id], references: [id])
+  player_id String  @db.ObjectId
+}
 
 model Players {
   id         String  @id @default(auto()) @map("_id") @db.ObjectId
@@ -54,12 +54,12 @@ model Players {
   team       Teams?  @relation(fields: [teamID], references: [id])
   teamID     String? @db.ObjectId
 
-  games    Games[]  @relation(fields: [gamesIDs], references: [id])
-  gamesIDs String[] @db.ObjectId
+  // games    Games[]  @relation(fields: [gamesIDs], references: [id])
+  // gamesIDs String[] @db.ObjectId
 
   // game       Games?          @relation(fields: [gameId], references: [id])
   // gameId     String?         @db.ObjectId
-  // players Players_Games[]
+  players_games Players_Games[]
 
   player_peripherals Player_Peripherals[]
 
