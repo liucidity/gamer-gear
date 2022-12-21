@@ -14,7 +14,8 @@ type Props = {
   allPlayers: any;
   games: any;
   bannerPlayers: any;
-  mouseRanking: any;
+  productRanking: any;
+  valorantPlayers: any;
 };
 
 // ---- Data ----
@@ -56,6 +57,7 @@ export async function getServerSideProps() {
     },
   });
 
+  // mouse rankings
   const mouseRanking = await prisma.mouse.findMany({
     include: {
       _count: {
@@ -64,7 +66,79 @@ export async function getServerSideProps() {
         }
       }
     },
-    take: 10,
+    take: 5,
+    orderBy: {
+      player_peripherals: {
+       _count: 'desc' 
+      }
+    }
+  })
+  const keyboardRanking = await prisma.keyboard.findMany({
+    include: {
+      _count: {
+        select: {
+          player_peripherals: true
+        }
+      }
+    },
+    take: 5,
+    orderBy: {
+      player_peripherals: {
+       _count: 'desc' 
+      }
+    }
+  })
+  const headsetRanking = await prisma.headset.findMany({
+    include: {
+      _count: {
+        select: {
+          player_peripherals: true
+        }
+      },
+      player_peripherals:{
+        include: {
+          players: {
+            select: {
+              players_games: {
+                where:{gameId:"63991b73ffc939d2f290c025"}
+              }
+            }
+          }
+        }
+      }
+    },
+    take: 5,
+    orderBy: {
+      player_peripherals: {
+       _count: 'desc' 
+      }
+    },
+
+  })
+  const monitorRanking = await prisma.monitors.findMany({
+    include: {
+      _count: {
+        select: {
+          player_peripherals: true
+        }
+      }
+    },
+    take: 5,
+    orderBy: {
+      player_peripherals: {
+       _count: 'desc' 
+      }
+    }
+  })
+  const mousepadRanking = await prisma.mousepad.findMany({
+    include: {
+      _count: {
+        select: {
+          player_peripherals: true
+        }
+      }
+    },
+    take: 5,
     orderBy: {
       player_peripherals: {
        _count: 'desc' 
@@ -72,29 +146,127 @@ export async function getServerSideProps() {
     }
   })
 
+  // const valorantPlayers = await prisma.players_Games.findMany({
+  //   // find all players under csgo
+
+  //   // include category (mouse)
+  //   // include player peripherals where player ==
+  //   where:{gameId:"63991b73ffc939d2f290c025"},
+  //   include: {
+  //    player: {
+  //      include: {
+  //        player_peripherals: {
+  //          include: {
+             
+  //          }
+  //        }
+  //      }
+  //    }
+  //   },
+  //   take: 5,
+  //   orderBy: {
+  //     player: {
+  //       player_peripherals: {
+  //         _count: 'desc'
+  //       }
+  //     }
+
+  //   }
+
+  // })
+
+  const valorantPlayers = await prisma.mouse.findMany({
+    // find all players under csgo
+
+    // include category (mouse)
+    // include player peripherals where player ==
+    where: {
+      player_peripherals: {
+        some: {
+          players: {
+            players_games: {
+              some: {
+                gameId: "63991b73ffc939d2f290c025"
+              }
+            }
+          }
+        }
+      }
+    },
+    include: {
+      player_peripherals: {
+        select: {
+          players: {
+            select: {
+              players_games: {
+                where: {
+                  gameId: "63991b73ffc939d2f290c025"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // include: {
+    //   _count: {
+    //     select: {
+    //       player_peripherals: {
+            
+    //       }
+    //     }
+    //   },
+    //   player_peripherals: {
+    //     include: {
+    //       players: {
+    //         include: {
+    //           players_games: {
+    //             where: {
+    //                     gameId: "63991b73ffc939d2f290c025"
+    //             },
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+  })
+
+  // const valplayermouse = await prisma.mouse.findMany({
+
+  // })
+
+
   const games = await prisma.games.findMany();
   const allPlayers = await prisma.players.findMany();
+  const productRanking = {mouseRanking,keyboardRanking,monitorRanking,mousepadRanking,headsetRanking}
   return {
     props: {
       games: JSON.parse(JSON.stringify(games)),
       allPlayers: allPlayers,
       bannerPlayers: bannerPlayers,
-      mouseRanking
+      productRanking,
+      valorantPlayers,
     },
   };
 }
 
 
-const Home = ({ children, allPlayers, games, bannerPlayers, mouseRanking }: Props) => {
-  // console.table( mouseRanking);
+const Home = ({ children, allPlayers, games, bannerPlayers, productRanking, valorantPlayers }: Props) => {
+  // console.log("bannerPlayers: ", bannerPlayers);
+  // console.table( productRanking);
+  console.table({valorantPlayers});
   
   return (
-    <>
-      <HeroSection bannerPlayers={bannerPlayers} />
-      {/* <Searchbar /> */}
-      <ProductRanking />
+    <div className="flex h-full w-full flex-col items-center justify-between pt-24">
+      <HeroSection playersData={playersData} />
+    
       <Games games={games} players={allPlayers} />
-    </>
+      <ProductRanking productRanking={productRanking} />
+    </div>
+
   );
 };
 
