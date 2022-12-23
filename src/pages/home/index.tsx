@@ -23,6 +23,9 @@ type Props = {
 
 const VALORANT_ID = "63991c24ffc939d2f290c026"
 const CSGO_ID = "63991b73ffc939d2f290c025"
+const FORTNITE_ID = "63a5005bcc0038b4e98b7e67"
+const OVERWATCH_ID = "63a5030bcc0038b4e98b7f17"
+const APEX_ID = "63a50429cc0038b4e98b7f18"
 
 
 
@@ -154,9 +157,12 @@ export async function getStaticProps() {
   
   const valorant = await getPeripheralData(VALORANT_ID)
   const csgo = await getPeripheralData(CSGO_ID)
+  const fortnite = await getPeripheralData(FORTNITE_ID)
+  const overwatch = await getPeripheralData(OVERWATCH_ID)
+  const apex = await getPeripheralData(APEX_ID)
 
 
-  const peripheralData = {valorant, csgo}
+  const peripheralData = {valorant, csgo,fortnite,overwatch, apex}
 
   const games = await prisma.games.findMany();
   const allPlayers = await prisma.players.findMany();
@@ -177,7 +183,7 @@ const Home = ({ children, allPlayers, games, bannerPlayers, valorantPlayers, per
   return (
     <div className="flex h-full w-full flex-col items-center justify-between">
       <HeroSection bannerPlayers={bannerPlayers} />
-      <CldImage width="200" height="200" src="gamer-gear/g pro x superlight black" />
+      {/* <CldImage width="200" height="200" src="gamer-gear/g pro x superlight black" /> */}
       {/* <Games games={games} players={allPlayers} /> */}
       <ProductRanking peripheralData={peripheralData} />
     </div>
