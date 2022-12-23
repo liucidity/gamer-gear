@@ -17,11 +17,11 @@ export function ProductRanking ({peripheralData}:Props) {
   console.log(game)
 
   return (
-    <section>
+    <section className='relative w-full flex flex-col items-center justify-center'>
       <h1>Top Products By Game</h1>
 
       <Games setGame={setGame}/>
-      <div className='border-2 p-8 w-[80vw] h-[70vh] flex flex-row justify-between'>
+      <div className='border-2 p-8 flex flex-row justify-between'>
         
         <div>
           Mice

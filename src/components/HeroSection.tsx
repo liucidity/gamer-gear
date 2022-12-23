@@ -17,7 +17,6 @@ type Props = {
 
 // ---- Main Landing Page Component ----
 const HeroSection = ({ bannerPlayers }: Props) => {
-  console.log(`from HeroSection `, bannerPlayers);
 
   // ---- Helpers ----
   const mapBannerPlayers = bannerPlayers.map(
@@ -34,7 +33,7 @@ const HeroSection = ({ bannerPlayers }: Props) => {
   );
 
   return (
-    <section className="flex h-full w-full flex-col items-center justify-end bg-black-main pb-5">
+    <section className="relative flex h-screen w-full flex-col items-center justify-end bg-black-main pb-5">
       <header id="banner-container" className="flex h-5/6 w-full md:w-5/6">
         {mapBannerPlayers}
       </header>
