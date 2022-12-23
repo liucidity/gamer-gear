@@ -2,6 +2,7 @@ import {useState} from "react";
 import { PrismaClient } from "@prisma/client";
 import useSWR from 'swr'
 
+import { CldImage } from "next-cloudinary";
 // ---- Components ----
 import SnapCarousel from "../../components/SnapCarousel";
 import { GameCard } from "../../components/Widgets/GameCard";
@@ -157,7 +158,6 @@ export async function getStaticProps() {
 
   const peripheralData = {valorant, csgo}
 
-
   const games = await prisma.games.findMany();
   const allPlayers = await prisma.players.findMany();
   return {
@@ -177,10 +177,10 @@ const Home = ({ children, allPlayers, games, bannerPlayers, valorantPlayers, per
   return (
     <div className="flex h-full w-full flex-col items-center justify-between">
       <HeroSection bannerPlayers={bannerPlayers} />
+      <CldImage width="200" height="200" src="gamer-gear/g pro x superlight black" />
+      {/* <Games games={games} players={allPlayers} /> */}
       <ProductRanking peripheralData={peripheralData} />
-
     </div>
-
   );
 };
 
