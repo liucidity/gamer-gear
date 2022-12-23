@@ -1,5 +1,7 @@
-import React from "react";
+import {useState} from "react";
 import { PrismaClient } from "@prisma/client";
+import useSWR from 'swr'
+
 // ---- Components ----
 import SnapCarousel from "../../components/SnapCarousel";
 import { GameCard } from "../../components/Widgets/GameCard";
@@ -14,12 +16,17 @@ type Props = {
   allPlayers: any;
   games: any;
   bannerPlayers: any;
-  productRanking: any;
   valorantPlayers: any;
+  peripheralData:any;
 };
 
+const VALORANT_ID = "63991c24ffc939d2f290c026"
+const CSGO_ID = "63991b73ffc939d2f290c025"
+
+
+
 // ---- Data ----
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const prisma = new PrismaClient();
   const bannerPlayers = await prisma.players.findMany({
     where: {
@@ -57,211 +64,121 @@ export async function getServerSideProps() {
     },
   });
 
-  // mouse rankings
-  const mouseRanking = await prisma.mouse.findMany({
-    include: {
-      _count: {
-        select: {
-          player_peripherals: true
-        }
-      }
-    },
-    take: 5,
-    orderBy: {
-      player_peripherals: {
-       _count: 'desc' 
-      }
-    }
-  })
-  const keyboardRanking = await prisma.keyboard.findMany({
-    include: {
-      _count: {
-        select: {
-          player_peripherals: true
-        }
-      }
-    },
-    take: 5,
-    orderBy: {
-      player_peripherals: {
-       _count: 'desc' 
-      }
-    }
-  })
-  const headsetRanking = await prisma.headset.findMany({
-    include: {
-      _count: {
-        select: {
-          player_peripherals: true
-        }
+  const sortGearByCount = (data) => {
+    // take the valorant object
+     Object.keys(data).map((category)=> { 
+  
+     data[`${category}`] = data[category].reduce((sorted, player)=> {
+         let index = 0;
+         while(index < sorted.length && player.player_peripherals.length < sorted[index].player_peripherals.length) index++
+         sorted.splice(index,0,player);
+         return sorted;
+       },[])
+      //  keep only top 5 results
+       data[`${category}`].splice(5)
+     })
+     // return sorted valorant object
+     console.error('result:', data)
+     return data
+   }
+
+  const getPeripheralData = async (gameID:string) =>{
+    const mouse = await prisma.mouse.findMany({
+      include: {
+        player_peripherals: {
+          where: {
+            players: {
+              players_games: {
+                some: {
+                  gameId: gameID
+                },
+              }
+            }
+          }
+  
+        },
+        _count: {
+          select: {
+            player_peripherals: true
+          }
+        },
       },
-      player_peripherals:{
-        include: {
-          players: {
-            select: {
+    })
+    const keyboard = await prisma.keyboard.findMany({
+      include: {
+        player_peripherals: {
+          where: {
+            players: {
               players_games: {
-                where:{gameId:"63991b73ffc939d2f290c025"}
+                some: {
+                  gameId: gameID
+                },
               }
             }
           }
-        }
-      }
-    },
-    take: 5,
-    orderBy: {
-      player_peripherals: {
-       _count: 'desc' 
-      }
-    },
-
-  })
-  const monitorRanking = await prisma.monitors.findMany({
-    include: {
-      _count: {
-        select: {
-          player_peripherals: true
-        }
-      }
-    },
-    take: 5,
-    orderBy: {
-      player_peripherals: {
-       _count: 'desc' 
-      }
-    }
-  })
-  const mousepadRanking = await prisma.mousepad.findMany({
-    include: {
-      _count: {
-        select: {
-          player_peripherals: true
-        }
-      }
-    },
-    take: 5,
-    orderBy: {
-      player_peripherals: {
-       _count: 'desc' 
-      }
-    }
-  })
-
-  // const valorantPlayers = await prisma.players_Games.findMany({
-  //   // find all players under csgo
-
-  //   // include category (mouse)
-  //   // include player peripherals where player ==
-  //   where:{gameId:"63991b73ffc939d2f290c025"},
-  //   include: {
-  //    player: {
-  //      include: {
-  //        player_peripherals: {
-  //          include: {
-             
-  //          }
-  //        }
-  //      }
-  //    }
-  //   },
-  //   take: 5,
-  //   orderBy: {
-  //     player: {
-  //       player_peripherals: {
-  //         _count: 'desc'
-  //       }
-  //     }
-
-  //   }
-
-  // })
-
-  const valorantPlayers = await prisma.mouse.findMany({
-    // find all players under csgo
-
-    // include category (mouse)
-    // include player peripherals where player ==
-    where: {
-      player_peripherals: {
-        some: {
-          players: {
-            players_games: {
-              some: {
-                gameId: "63991b73ffc939d2f290c025"
-              }
-            }
+  
+        },
+        _count: {
+          select: {
+            player_peripherals: true
           }
-        }
-      }
-    },
-    include: {
-      player_peripherals: {
-        select: {
-          players: {
-            select: {
+        },
+      },
+    })
+    const headset = await prisma.headset.findMany({
+      include: {
+        player_peripherals: {
+          where: {
+            players: {
               players_games: {
-                where: {
-                  gameId: "63991b73ffc939d2f290c025"
-                }
+                some: {
+                  gameId: gameID
+                },
               }
             }
           }
-        }
-      }
-    }
+  
+        },
+        _count: {
+          select: {
+            player_peripherals: true
+          }
+        },
+      },
+    })
+    
+    const data = {mouse,keyboard,headset}
+    return sortGearByCount(data)
+  }
+  
+  const valorant = await getPeripheralData(VALORANT_ID)
+  const csgo = await getPeripheralData(CSGO_ID)
 
-    // include: {
-    //   _count: {
-    //     select: {
-    //       player_peripherals: {
-            
-    //       }
-    //     }
-    //   },
-    //   player_peripherals: {
-    //     include: {
-    //       players: {
-    //         include: {
-    //           players_games: {
-    //             where: {
-    //                     gameId: "63991b73ffc939d2f290c025"
-    //             },
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
 
-  })
-
-  // const valplayermouse = await prisma.mouse.findMany({
-
-  // })
+  const peripheralData = {valorant, csgo}
 
 
   const games = await prisma.games.findMany();
   const allPlayers = await prisma.players.findMany();
-  const productRanking = {mouseRanking,keyboardRanking,monitorRanking,mousepadRanking,headsetRanking}
   return {
     props: {
       games: JSON.parse(JSON.stringify(games)),
       allPlayers: allPlayers,
       bannerPlayers: bannerPlayers,
-      productRanking,
-      valorantPlayers,
+      peripheralData: JSON.parse(JSON.stringify(peripheralData)),
     },
   };
 }
 
 
-const Home = ({ children, allPlayers, games, bannerPlayers, productRanking, valorantPlayers }: Props) => {
-  
+
+const Home = ({ children, allPlayers, games, bannerPlayers, valorantPlayers, peripheralData }: Props) => {
+    
   return (
     <div className="flex h-full w-full flex-col items-center justify-between">
       <HeroSection bannerPlayers={bannerPlayers} />
-    
-      {/* <Games games={games} players={allPlayers} /> */}
-      {/* <ProductRanking productRanking={productRanking} /> */}
+      <ProductRanking peripheralData={peripheralData} />
+
     </div>
 
   );
