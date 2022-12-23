@@ -171,20 +171,14 @@ export async function getStaticProps() {
 }
 
 
+
 const Home = ({ children, allPlayers, games, bannerPlayers, valorantPlayers, peripheralData }: Props) => {
-  // console.log("bannerPlayers: ", bannerPlayers);
-  // console.table( productRanking);
-  // console.log(valorantPlayers);
-  console.error(peripheralData)
-
-
-  
-  return (
-    <div className="flex h-full w-full flex-col items-center justify-between pt-24">
-      {/* <HeroSection playersData={playersData} /> */}
     
-
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-between">
+      <HeroSection bannerPlayers={bannerPlayers} />
       <ProductRanking peripheralData={peripheralData} />
+
     </div>
 
   );
