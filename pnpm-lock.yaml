@@ -12,6 +12,7 @@ specifiers:
   eslint-config-next: 13.0.6
   framer-motion: ^7.8.0
   next: 13.0.6
+  next-cloudinary: ^1.4.0
   postcss: ^8.4.20
   prettier: ^2.8.1
   prettier-plugin-tailwindcss: ^0.2.1
@@ -32,6 +33,7 @@ dependencies:
   eslint-config-next: 13.0.6_s5ps7njkmjlaqajutnox5ntcla
   framer-motion: 7.8.0_biqbaboplfbrettd7655fr4n2y
   next: 13.0.6_biqbaboplfbrettd7655fr4n2y
+  next-cloudinary: 1.4.0_next@13.0.6+react@18.2.0
   prisma: 4.7.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -61,6 +63,18 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: false
+
+  /@cloudinary/transformation-builder-sdk/1.1.0:
+    resolution: {integrity: sha512-BqhTqIwPTyQ4hE0NjKXf/bF7VAjwe2ZHNuypdG6oQ6bDoiLTOSzdAZsg0jFndureQiVPavBKOzQTjHImp45z/g==}
+    dependencies:
+      '@cloudinary/url-gen': 1.8.7
+    dev: false
+
+  /@cloudinary/url-gen/1.8.7:
+    resolution: {integrity: sha512-07Hqy3weuuRm8ZCwn/HejrfiC8MiC/dK13IWm01FslhWek55jUTsKqR5xMwYQPX8+MWpLXd/EI/FiwqWaB5dDA==}
+    dependencies:
+      '@cloudinary/transformation-builder-sdk': 1.1.0
     dev: false
 
   /@emotion/is-prop-valid/0.8.8:
@@ -1719,6 +1733,17 @@ packages:
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+    dev: false
+
+  /next-cloudinary/1.4.0_next@13.0.6+react@18.2.0:
+    resolution: {integrity: sha512-y6A7MzTjcuTRaNrESuMBpQPvyxMy2KsXAZIxO6iOE48uAwyvXI/GIyTbZIkonRFaJiQ69Mh1BzbPA1fKu+RdCQ==}
+    peerDependencies:
+      next: ^12 || ^13
+      react: ^17 || ^18
+    dependencies:
+      '@cloudinary/url-gen': 1.8.7
+      next: 13.0.6_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
     dev: false
 
   /next/13.0.6_biqbaboplfbrettd7655fr4n2y:
