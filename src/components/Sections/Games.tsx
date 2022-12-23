@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import {PrismaClient} from '@prisma/client';
 import { GameCard } from '../Widgets/GameCard';
 import useSWR from 'swr'
@@ -7,11 +7,7 @@ import useSWR from 'swr'
 
 
 
-type Props = {
-  games:any;
-  players:any;
 
-}
 
 // export async function getStaticProps() {
 // const prisma = new PrismaClient();
@@ -40,8 +36,9 @@ type Props = {
 // }
 
 
-export function Games ({games,players}:Props) {
+export function Games ({setGame}:any) {
   // console.log({games,players})
+
 
    
   return (
@@ -53,7 +50,8 @@ export function Games ({games,players}:Props) {
       gameLogoSrc='/csgo_logo.png'
       gameLogoAlt='/csgo_logo.png'
       textStyle='logo-text'
-      gameName='CounterStrike'
+      game='csgo'
+      setGame={setGame}
       />
       <GameCard 
       gameImageAlt='valorant.jpg' 
@@ -62,7 +60,9 @@ export function Games ({games,players}:Props) {
       gameLogoSrc='/val_logo.png'
       gameLogoAlt='/val_logo.png'
       textStyle='object-cover'
-      gameName='Valorant'/>
+      game='valorant'
+      setGame={setGame}
+      />
       <GameCard 
       gameImageAlt='fortnite.jpg' 
       gameImageSrc='/fortnite.jpg' 
@@ -70,7 +70,8 @@ export function Games ({games,players}:Props) {
       gameLogoSrc='/fortnite_logo.png'
       gameLogoAlt='/fortnite_logo.png'
       textStyle='logo-text'
-      gameName='Fortnite'
+      game='fortnite'
+      setGame={setGame}
       />
       <GameCard 
       gameImageAlt='ow.png' 
@@ -79,7 +80,9 @@ export function Games ({games,players}:Props) {
       gameLogoSrc='/ow_logo.png'
       gameLogoAlt='/ow_logo.png'
       textStyle='logo-text'
-      gameName='Overwatch'/>
+      game='overwatch'
+      setGame={setGame}
+      />
       <GameCard 
       gameImageAlt='apex.png' 
       gameImageSrc='/apex.png'
@@ -87,7 +90,9 @@ export function Games ({games,players}:Props) {
       gameLogoSrc='/apex_logo.png'
       gameLogoAlt='/apex_logo.png'
       textStyle='logo-text'
-      gameName='Apex Legends'/>
+      game='apex'
+      setGame={setGame}
+      />
       
     </section>
   );

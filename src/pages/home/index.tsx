@@ -26,8 +26,8 @@ const CSGO_ID = "63991b73ffc939d2f290c025"
 
 
 // ---- Data ----
-const prisma = new PrismaClient();
 export async function getStaticProps() {
+  const prisma = new PrismaClient();
   const bannerPlayers = await prisma.players.findMany({
     where: {
       OR: [
@@ -150,71 +150,12 @@ export async function getStaticProps() {
     const data = {mouse,keyboard,headset}
     return sortGearByCount(data)
   }
-  const valorantData = await getPeripheralData(VALORANT_ID)
-  const csgoData = await getPeripheralData(CSGO_ID)
- // console.log(sortedPlayers)
-
- //  const fetcher = (...args) => fetch(...args).then(res=>res.json())
- 
-//  const useGetGearData = (game)=> {
-   
-//    const {data, error} = useSWR(`/api/${game}`, fetcher)
-//    if (error) return <div>An error occured.</div>
-//    if (!data) return <div>Loading ...</div>
-   
-//    console.error(sortGearByCount(data))
-//   }
-
-//   const res = await fetch('/api/valorant')
-//   const valorant = await res.json()
-//   sortGearByCount(valorant)
-
-// const valorantData = await getValorantData();
-// sortGearByCount(valorantData)
   
-  // sorts fetched data by number of uses
- 
+  const valorant = await getPeripheralData(VALORANT_ID)
+  const csgo = await getPeripheralData(CSGO_ID)
 
 
-  // const valorantPlayers = await prisma.mouse.findMany({
-  //   // find all players under csgo
-
-  //   // include category (mouse)
-  //   // include player peripherals where player ==
-
-  //   include: {
-  //     player_peripherals: {
-  //       where: {
-  //         players: {
-  //           players_games: {
-  //             some: {
-  //               gameId: "63991c24ffc939d2f290c026"
-  //             },
-  //           }
-  //         }
-  //       }
-
-  //     },
-  //     _count: {
-  //       select: {
-  //         player_peripherals: true
-  //       }
-  //     },
-  //   },
-
-  // })
-
-  // create function that map valorant players. check .player_peripherals.length on each.
-
-  // const sortedPlayers = {valorantPlayers}.reduce((sorted, player)=> {
-  //   let index=0;
-  //   while(index < sorted.Player_Peripherals.length())
-  // })
-  // const valplayermouse = await prisma.mouse.findMany({
-
-  // })
-
-  const peripheralData = {valorantData, csgoData}
+  const peripheralData = {valorant, csgo}
 
 
   const games = await prisma.games.findMany();
