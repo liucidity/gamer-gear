@@ -16,7 +16,7 @@ const Layout = ({ children }: any) => {
   return (
     <>
       <Navbar></Navbar>
-      <main className={`${roboto.variable} font-sans w-screen h-screen relative`}>{ children }</main>
+      <main className={`${roboto.variable} font-sans relative`}>{ children }</main>
       {/* <Footer></Footer> */}
     </>
   )
