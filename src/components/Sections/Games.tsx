@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {PrismaClient} from '@prisma/client';
 import { GameCard } from '../Widgets/GameCard';
+import useSWR from 'swr'
 
 
 
@@ -38,8 +39,11 @@ type Props = {
 //   };
 // }
 
+
 export function Games ({games,players}:Props) {
-  console.log({games,players})
+  // console.log({games,players})
+
+   
   return (
     <section className='flex flex-row'>
       <GameCard 

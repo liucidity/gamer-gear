@@ -1,28 +1,31 @@
 import * as React from 'react';
 import { ProductRankingList } from '../ProductRankingList';
+import { Games } from './Games';
 
 export interface Props {
-  productRanking: any
+  peripheralData: any
 }
 
-export function ProductRanking ({productRanking}:Props) {
-  console.table(productRanking)
+export function ProductRanking ({peripheralData}:Props) {
+  console.table(peripheralData)
   return (
     <section>
       <h1>Top Products By Game</h1>
+
+      <Games />
       <div className='border-2 p-8 w-[80vw] h-[70vh] flex flex-row justify-between'>
         
         <div>
           Mice
-        <ProductRankingList items={productRanking.mouseRanking}/>
+        <ProductRankingList items={peripheralData.valorantData.mouse}/>
         </div>
         <div>
         Keyboards
-        <ProductRankingList items={productRanking.keyboardRanking}/>
+        <ProductRankingList items={peripheralData.valorantData.keyboard}/>
         </div>
         <div>
           Headsets
-        <ProductRankingList items={productRanking.headsetRanking}/>
+        <ProductRankingList items={peripheralData.valorantData.headset}/>
         </div>
       </div>
 
