@@ -9,13 +9,16 @@ export interface Props {
   gameLogoAlt: string,
   imageStyle: string,
   textStyle: string,
-  gameName: string,
+  game: string,
+  setGame: any
 
 }
 
-export function GameCard ({gameImageSrc,gameImageAlt,imageStyle, gameLogoAlt, gameLogoSrc,textStyle, gameName}: Props) {
+export function GameCard ({gameImageSrc,gameImageAlt,imageStyle, gameLogoAlt, gameLogoSrc,textStyle, game, setGame}: Props) {
+
+  
   return (
-    <div className='group flex flex-col items-center'>
+    <div className='group flex flex-col items-center' onClick={()=> setGame({game})}>
     <div className='gamecard'>
       <Image src={gameImageSrc} alt={gameImageAlt} fill
       className={imageStyle}/>
@@ -25,7 +28,6 @@ export function GameCard ({gameImageSrc,gameImageAlt,imageStyle, gameLogoAlt, ga
         className={textStyle}/>
       </div>
     </div>
-    <span className='group-hover:text-blue'>{gameName}</span>
         </div>
   );
 }
