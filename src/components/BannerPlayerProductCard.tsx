@@ -33,9 +33,9 @@ Props) => {
       ></Image>
       <div className="absolute mt-[5rem] h-40 w-40 overflow-hidden rounded-full bg-slate-50 shadow-xl shadow-black/30 ring-4 ring-purple-main ring-offset-0">
         <CldImage
-          src="gamer-gear/shroud"
-          width={50}
-          height={50}
+          src={`gamer-gear/${username}`}
+          width={300}
+          height={300}
           alt={"profile pic"}
         />
       </div>
