@@ -1,19 +1,20 @@
 import React from "react";
 import darkGeoBg from "../../public/dark_geometric_bg.jpg";
+import { CldImage } from "next-cloudinary";
 import Image from "next/image";
 import BannerProductCard from "./Widgets/BannerProductCard";
 
 type Props = {
-  photoURL: string;
   playerGearArray: any[];
   username: string;
+  cldUserImage: string;
 };
 
 const BannerPlayerProductCard = ({
-  photoURL,
   playerGearArray,
   username,
-}: Props) => {
+}: // cldUserImage
+Props) => {
   const bannerProductCards = playerGearArray.map((gear, index) => {
     return (
       <BannerProductCard
@@ -31,14 +32,20 @@ const BannerPlayerProductCard = ({
         className="h-[10rem] w-full rounded-t-md bg-contain bg-center bg-no-repeat"
       ></Image>
       <div className="absolute mt-[5rem] h-40 w-40 overflow-hidden rounded-full bg-slate-50 shadow-xl shadow-black/30 ring-4 ring-purple-main ring-offset-0">
-        <Image src={photoURL} alt={"profile pic"} fill />
+        <CldImage
+          src="gamer-gear/shroud"
+          width={50}
+          height={50}
+          alt={"profile pic"}
+        />
       </div>
       <div className="flex h-4/5 w-full flex-col items-center justify-evenly rounded-b-md bg-slate-50 px-10 pb-2 md:pt-24 xl:pt-20">
-        <ol className="flex justify-center items-center w-full h-[4rem]">
-          <div className="w-full h-[1px] bg-neutral-400"></div>
-          <h1 className="w-full text-center mx-3 font-sans font-bold text-2xl">{username}&apos;s <br></br> Peripherals</h1>
-          <div className="w-full h-[1px] bg-neutral-400"></div>
-
+        <ol className="flex h-[4rem] w-full items-center justify-center">
+          <div className="h-[1px] w-full bg-neutral-400"></div>
+          <h1 className="mx-3 w-full text-center font-sans text-2xl font-bold">
+            {username}&apos;s <br></br> Peripherals
+          </h1>
+          <div className="h-[1px] w-full bg-neutral-400"></div>
         </ol>
         {bannerProductCards}
       </div>
