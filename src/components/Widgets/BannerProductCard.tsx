@@ -2,6 +2,7 @@ import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import productImageTest from "../../../public/product_image_test.png";
 import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 
 type Props = {
   product_name: string;
@@ -32,7 +33,7 @@ const BannerProductCard = ({ product_name, key, category }: Props) => {
       className="flex h-1/5 w-full items-center justify-between rounded-md bg-slate-200 px-2 drop-shadow-sm "
     >
       <div className="relative flex aspect-square h-4/5 items-center justify-center overflow-hidden rounded-md bg-slate-50 ">
-        <Image src={productImageTest} alt={"product image"} fill></Image>
+        <CldImage src={`gamer-gear/${product_name}`} alt={"product image"} width={100} height={100}></CldImage>
       </div>
       <div className="flex h-full w-3/4 flex-col items-center justify-evenly ">
         <h1 className="px-2 text-center font-sans text-sm font-semibold tracking-wide  md:text-sm 2xl:text-lg">
