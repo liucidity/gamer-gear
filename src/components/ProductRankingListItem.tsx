@@ -6,7 +6,7 @@ export interface Props {
 
 export function ProductRankingListItem ({item}: Props) {
   return (
-    <div className='flex flex-row items-center justify-between bg-blue p-2 m-0 h-12 w-96'>
+    <div className='flex flex-row items-center justify-between bg-blue p-2 m-0 h-12 w-[36rem]'>
       <div className=''>
         {/* image */}
       </div>

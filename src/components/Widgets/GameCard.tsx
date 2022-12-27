@@ -25,7 +25,7 @@ export function GameCard({
 }: Props) {
   return (
     <div
-      className="group flex flex-col items-center border-2 border-black"
+      className="group flex flex-col items-center"
       onClick={() => setGame({ game })}
     >
       <div className="gamecard">
