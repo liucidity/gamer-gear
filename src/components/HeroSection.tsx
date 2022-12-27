@@ -20,12 +20,11 @@ const HeroSection = ({ bannerPlayers }: Props) => {
 
   // ---- Helpers ----
   const mapBannerPlayers = bannerPlayers.map(
-    ({ id, username, picture, player_peripherals }) => {
+    ({ id, username, player_peripherals }) => {
       return (
         <HeroPanels
           key={id}
           username={username}
-          photoURL={picture}
           playerGear={player_peripherals}
         />
       );

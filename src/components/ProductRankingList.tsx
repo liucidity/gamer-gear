@@ -21,11 +21,11 @@ export function ProductRankingList ({items}: Props) {
           data: items.map((item)=> item.player_peripherals.length),
           // you can set indiviual colors for each bar
           backgroundColor: [
-            'rgba(196, 43, 240, 0.8)',
-            'rgba(255, 255, 123, 0.8)',
-            'rgba(255, 002, 412, 0.8)',
-            'rgba(000, 002, 412, 0.8)',
-            'rgba(255, 002, 123, 0.8)',
+            '#C42BF0',
+            '#F02BBA',
+            '#F0622B',
+            '#57F02B',
+            '#2BB9F0',
           ],
           borderWidth: 2,
         }

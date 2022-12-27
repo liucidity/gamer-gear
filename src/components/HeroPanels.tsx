@@ -1,18 +1,18 @@
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import BannerPlayerProductCard from "./BannerPlayerProductCard";
 
 // ---- Type Definitions ----
 type Props = {
   key: string;
   username: string;
-  photoURL: string;
   playerGear: any;
 };
 
 // ---- Main Component ----
-const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
+const HeroPanels = ({ key, username, playerGear }: Props) => {
   // ---- Framer Motion ----
   const controls = useAnimation();
   const mouseEnterControls = () => {
@@ -40,8 +40,10 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
     },
   };
   // ---- Data ----
-  const { keyboard, mouse, headset} = playerGear[0];
+  const { keyboard, mouse, headset } = playerGear[0];
   const playerGearArray = [keyboard, mouse, headset];
+  // ---- UserImages ----
+  // const cldUserImage = `gamer-gear/${username}`;
 
   return (
     <motion.section
@@ -57,12 +59,12 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
         variants={bannerFM}
         animate={controls}
       >
-        <Image
-          src={photoURL}
+        <CldImage
+          src={`gamer-gear/${username}`}
+          width={500}
+          height={751}
           alt={`${username}-pic`}
-          style={{ objectFit: "cover"}}
-          fill
-        ></Image>
+        />
         <h1 className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 break-words p-2 text-center font-sans text-3xl font-extrabold text-white">
           PLAY LIKE
           <br />
@@ -70,11 +72,15 @@ const HeroPanels = ({ key, username, photoURL, playerGear }: Props) => {
         </h1>
       </motion.span>
       <motion.div
-        className="hidden h-full w-full flex-shrink-0 flex-col items-center justify-evenly md:flex p-2"
+        className="hidden h-full w-full flex-shrink-0 flex-col items-center justify-evenly p-2 md:flex"
         variants={bannerFM}
         animate={controls}
       >
-        <BannerPlayerProductCard photoURL={photoURL} playerGearArray={playerGearArray} username={username}/>
+        <BannerPlayerProductCard
+          playerGearArray={playerGearArray}
+          username={username}
+          // cldUserImage={cldUserImage}
+        />
       </motion.div>
     </motion.section>
   );

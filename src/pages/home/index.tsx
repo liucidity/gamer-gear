@@ -183,8 +183,6 @@ const Home = ({ children, allPlayers, games, bannerPlayers, valorantPlayers, per
   return (
     <div className="flex h-full w-full flex-col items-center justify-between">
       <HeroSection bannerPlayers={bannerPlayers} />
-      {/* <CldImage width="200" height="200" src="gamer-gear/g pro x superlight black" /> */}
-      {/* <Games games={games} players={allPlayers} /> */}
       <ProductRanking peripheralData={peripheralData} />
     </div>
   );
