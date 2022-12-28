@@ -32,7 +32,7 @@ const BannerProductCard = ({ product_name, key, category }: Props) => {
       key={key}
       className="flex h-1/5 w-full items-center justify-between rounded-md bg-slate-200 px-2 drop-shadow-sm "
     >
-      <div className="relative flex aspect-square h-4/5 items-center justify-center overflow-hidden rounded-md bg-slate-50 ">
+      <div className="relative flex aspect-square h-4/5 items-center justify-center overflow-hidden rounded-md bg-slate-50">
         <CldImage src={`gamer-gear/${product_name}`} alt={"product image"} width={100} height={100}></CldImage>
       </div>
       <div className="flex h-full w-3/4 flex-col items-center justify-evenly ">

@@ -181,7 +181,7 @@ export async function getStaticProps() {
 const Home = ({ children, allPlayers, games, bannerPlayers, valorantPlayers, peripheralData }: Props) => {
     
   return (
-    <div className="flex h-full w-full flex-col items-center justify-between">
+    <div className="flex h-full w-screen flex-col items-center justify-between">
       <HeroSection bannerPlayers={bannerPlayers} />
       <ProductRanking peripheralData={peripheralData} />
     </div>
