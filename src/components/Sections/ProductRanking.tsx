@@ -1,48 +1,40 @@
-import {useState} from 'react'
-import { ProductRankingList } from '../ProductRankingList';
-import { Games } from './Games';
+import { useState } from "react";
+import { ProductRankingList } from "../ProductRankingList";
+import { Games } from "./Games";
 
 export interface Props {
-  peripheralData: any
+  peripheralData: any;
 }
 
 interface GameName {
   game: string;
 }
 
-export function ProductRanking ({peripheralData}:Props) {
-  console.table(peripheralData)
-  const [game, setGame] = useState<GameName>({game:"valorant"})
+export function ProductRanking({ peripheralData }: Props) {
+  console.table(peripheralData);
+  const [game, setGame] = useState<GameName>({ game: "valorant" });
 
-  console.log(game)
+  console.log(game);
 
   return (
-    <section className='relative w-full flex flex-col items-center justify-center mx-20 mt-4'>
-      <h1 className='mx-12 my-4 text-xl'>Top Products By Game</h1>
+    <section className="relative mt-8 flex w-full flex-col items-center justify-center">
+      <h1 className="text-xl">Top Products By Game</h1>
 
-      <Games setGame={setGame} className=''/>
-      <div className='p-8 gap-2 flex flex-row justify-evenly mt-2'>
-        
-        <div className='text-center'>
-          <h3>
-          Mice
-          </h3>
-        <ProductRankingList items={peripheralData[`${game.game}`].mouse}/>
+      <Games setGame={setGame} />
+      <div className="mt-6 flex flex-row justify-between">
+        <div className="w-1/3 text-center">
+          <h3>Mice</h3>
+          <ProductRankingList items={peripheralData[`${game.game}`].mouse} />
         </div>
-        <div className='text-center'>
-        <h3>
-        Keyboards
-        </h3>
-        <ProductRankingList items={peripheralData[`${game.game}`].keyboard}/>
+        <div className="w-1/3 text-center">
+          <h3>Keyboards</h3>
+          <ProductRankingList items={peripheralData[`${game.game}`].keyboard} />
         </div>
-        <div className='text-center'>
-          <h3>
-          Headsets
-          </h3>
-        <ProductRankingList items={peripheralData[`${game.game}`].headset}/>
+        <div className="w-1/3 text-center">
+          <h3>Headsets</h3>
+          <ProductRankingList items={peripheralData[`${game.game}`].headset} />
         </div>
       </div>
-
     </section>
   );
 }
