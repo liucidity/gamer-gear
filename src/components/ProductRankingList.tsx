@@ -10,7 +10,7 @@ type Props = {
 }
 
 export function ProductRankingList ({items}: Props) {
-  console.log(items)
+  // console.log(items)
 
   const chartData = {
     labels: items.map((item) => item.product_name),
