@@ -21,7 +21,7 @@ export function ProductRanking ({peripheralData}:Props) {
       <h1 className='mx-12 my-4 text-xl'>Top Products By Game</h1>
 
       <Games setGame={setGame} className=''/>
-      <div className='p-8 gap-2 flex flex-row justify-evenly mt-2'>
+      <div className='py-8 gap-2 flex flex-row flex-wrap justify-evenly mt-2'>
         
         <div className='text-center'>
           <h3>

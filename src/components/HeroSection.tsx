@@ -32,8 +32,8 @@ const HeroSection = ({ bannerPlayers }: Props) => {
   );
 
   return (
-    <section className="relative flex h-screen w-full flex-col items-center justify-end bg-black-main pb-5">
-      <header id="banner-container" className="flex h-5/6 w-full md:w-5/6">
+    <section className="relative flex pt-16 md:h-screen w-screen flex-col items-center justify-end bg-black-main pb-5">
+      <header id="banner-container" className="flex flex-col md:flex-row h-full w-full md:w-5/6">
         {mapBannerPlayers}
       </header>
     </section>
