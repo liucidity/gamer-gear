@@ -1,25 +1,23 @@
 // ---- Fonts
-import { Roboto } from '@next/font/google'
+import { Roboto } from "@next/font/google";
 
-import React from 'react'
-import Navbar from './Navbar'
-import Footer from './Footer'
+import React from "react";
+import Navbar from "./Navbar";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-roboto",
-})
+});
 
 const Layout = ({ children }: any) => {
   return (
-    <>
+    <main>
       <Navbar></Navbar>
-      <main className={`${roboto.variable} font-sans relative`}>{ children }</main>
-      {/* <Footer></Footer> */}
-    </>
-  )
-}
+      {children}
+    </main>
+  );
+};
 
-export default Layout
+export default Layout;

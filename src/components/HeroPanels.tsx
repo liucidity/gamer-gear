@@ -1,6 +1,5 @@
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
-import Image from "next/image";
 import { CldImage } from "next-cloudinary";
 import BannerPlayerProductCard from "./BannerPlayerProductCard";
 
@@ -42,14 +41,12 @@ const HeroPanels = ({ key, username, playerGear }: Props) => {
   // ---- Data ----
   const { keyboard, mouse, headset } = playerGear[0];
   const playerGearArray = [keyboard, mouse, headset];
-  // ---- UserImages ----
-  // const cldUserImage = `gamer-gear/${username}`;
 
   return (
     <motion.section
       key={key}
       id="banner_items-container"
-      className="flex w-full flex-shrink-0 overflow-x-hidden overflow-y-hidden border-black-main last-of-type:border-r-0 md:w-1/3 md:border-x-2 md:h-full"
+      className="flex flex-shrink-0 overflow-x-hidden border-black-main md:h-full md:w-1/3 md:border-r-2 md:last-of-type:border-r-0"
       onMouseEnter={mouseEnterControls}
       onMouseLeave={mouseLeaveControls}
     >
@@ -67,24 +64,22 @@ const HeroPanels = ({ key, username, playerGear }: Props) => {
           gravity="faces"
           crop="crop"
           zoom="0.5"
-          className='object-contain md:object-cover'
-
+          className="object-contain md:object-cover"
         />
-        <h1 className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 break-words p-2 text-center font-sans text-3xl font-extrabold text-white">
+        <h1 className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 break-words p-2 text-center font-sans text-3xl font-extrabold text-off-white">
           PLAY LIKE
           <br />
           {username}
         </h1>
       </motion.span>
       <motion.div
-        className="hidden h-full w-full flex-shrink-0 flex-col items-center justify-evenly p-2 md:flex"
+        className="flex h-full w-full flex-shrink-0 flex-col items-center p-2"
         variants={bannerFM}
         animate={controls}
       >
         <BannerPlayerProductCard
           playerGearArray={playerGearArray}
           username={username}
-          // cldUserImage={cldUserImage}
         />
       </motion.div>
     </motion.section>

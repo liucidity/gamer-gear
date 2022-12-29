@@ -8,8 +8,6 @@ type Props = {
 };
 
 export function ProductRankingList({ items }: Props) {
-  // console.log(items)
-
   const chartData = {
     labels: items.map((item) => item.product_name),
     // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
@@ -31,14 +29,13 @@ export function ProductRankingList({ items }: Props) {
   };
 
   return (
-    <div className="flex flex-col items-center m-2">
-      <div className="my-8">
+    <div className="flex w-full flex-col items-center">
+      <div className="my-4">
         <Chart chartData={chartData} />
       </div>
 
-      <ol>
+      <ol className="w-full">
         {items.map((item) => {
-          // console.log(product_name)
           return (
             <>
               <li>
