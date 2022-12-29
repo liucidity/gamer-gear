@@ -1,13 +1,5 @@
-import { useState } from "react";
 import { PrismaClient } from "@prisma/client";
-import useSWR from "swr";
-
-import { CldImage } from "next-cloudinary";
 // ---- Components ----
-import SnapCarousel from "../../components/SnapCarousel";
-import { GameCard } from "../../components/Widgets/GameCard";
-import { Games } from "../../components/Sections/Games";
-import Searchbar from "../../components/Widgets/Searchbar";
 import { ProductRanking } from "../../components/Sections/ProductRanking";
 import HeroSection from "../../components/HeroSection";
 
@@ -175,19 +167,13 @@ export async function getStaticProps() {
 }
 
 const Home = ({
-  children,
-  allPlayers,
-  games,
   bannerPlayers,
-  valorantPlayers,
   peripheralData,
 }: Props) => {
   return (
     <>
-      {/* <div className="flex w-full flex-col items-center justify-between"> */}
-        <HeroSection bannerPlayers={bannerPlayers} />
-        <ProductRanking peripheralData={peripheralData} />
-      {/* </div> */}
+      <HeroSection bannerPlayers={bannerPlayers} />
+      <ProductRanking peripheralData={peripheralData} />
     </>
   );
 };
