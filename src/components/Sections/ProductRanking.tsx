@@ -11,10 +11,7 @@ interface GameName {
 }
 
 export function ProductRanking({ peripheralData }: Props) {
-  // console.table(peripheralData);
   const [game, setGame] = useState<GameName>({ game: "valorant" });
-
-  // console.log(game);
 
   return (
     <section className="mt-8 flex max-w-full flex-col items-center overflow-x-hidden">
@@ -38,7 +35,3 @@ export function ProductRanking({ peripheralData }: Props) {
     </section>
   );
 }
-
-// use state to conditionally render carousel
-
-// render 1 carousel with 25 images, pills are pagination

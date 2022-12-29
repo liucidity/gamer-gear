@@ -1,6 +1,5 @@
 import * as React from "react";
 import { CldImage } from "next-cloudinary";
-import { defaults } from "chart.js";
 
 export interface Props {
   item: any;
