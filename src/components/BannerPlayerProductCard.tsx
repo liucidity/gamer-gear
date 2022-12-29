@@ -26,7 +26,7 @@ const BannerPlayerProductCard = ({ playerGearArray, username }: Props) => {
         alt={"dark geometric background"}
         className="h-[10rem] w-full rounded-t-md bg-contain bg-center bg-no-repeat"
       ></Image>
-      <div className="absolute mt-[3rem] h-40 w-40 overflow-hidden rounded-full bg-slate-50 shadow-xl shadow-black/30 ring-4 ring-purple-main ring-offset-0">
+      <div className="absolute aspect-square mt-[5rem] h-32 md:h-40 overflow-hidden rounded-full bg-slate-50 shadow-xl shadow-black/30 ring-4 ring-purple-main ring-offset-0">
         <CldImage
           src={`gamer-gear/${username}`}
           width={300}
@@ -38,7 +38,7 @@ const BannerPlayerProductCard = ({ playerGearArray, username }: Props) => {
         <ol className="flex h-[4rem] w-full items-center justify-center">
           <div className="h-[1px] w-full bg-neutral-400"></div>
           <h1 className="mx-3 w-full text-center font-sans text-2xl font-bold">
-            {username}&apos;s <br></br> Peripherals
+            {username}&apos;s <br></br> GamerGear
           </h1>
           <div className="h-[1px] w-full bg-neutral-400"></div>
         </ol>
