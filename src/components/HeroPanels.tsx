@@ -1,6 +1,5 @@
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
-import Image from "next/image";
 import { CldImage } from "next-cloudinary";
 import BannerPlayerProductCard from "./BannerPlayerProductCard";
 
@@ -42,8 +41,6 @@ const HeroPanels = ({ key, username, playerGear }: Props) => {
   // ---- Data ----
   const { keyboard, mouse, headset } = playerGear[0];
   const playerGearArray = [keyboard, mouse, headset];
-  // ---- UserImages ----
-  // const cldUserImage = `gamer-gear/${username}`;
 
   return (
     <motion.section
