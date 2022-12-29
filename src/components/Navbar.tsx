@@ -9,28 +9,8 @@ const Navbar = () => {
     dropDownOpen ? setDropDownOpen(false) : setDropDownOpen(true);
   };
   return (
-    <nav className="fixed inset-x-0 z-50 bg-black-main px-6 py-5 md:px-14">
-      <div className="flex justify-between md:justify-start">
-        <Logo></Logo>
-        {/* <button
-          className="flex border-2 border-purple-500 md:hidden"
-          onClick={() => handleDropDown()}
-        >
-          DropDown
-        </button> */}
-        {/* <div className="hidden md:flex md:items-center">
-          <MenuButtons link={"/products"}>Products</MenuButtons>
-          <MenuButtons link={"/games"}>Games</MenuButtons>
-          <MenuButtons link={"/players"}>Players</MenuButtons>
-        </div> */}
-      </div>
-      {/* {dropDownOpen && (
-        <div className="flex flex-col items-center justify-start py-4">
-          <MenuButtons link={"/products"}>Products</MenuButtons>
-          <MenuButtons link={"/games"}>Games</MenuButtons>
-          <MenuButtons link={"/players"}>Players</MenuButtons>
-        </div>
-      )} */}
+    <nav className="fixed inset-x-0 z-50 flex h-[5rem] items-center justify-start bg-black-main px-6 md:px-14">
+      <Logo></Logo>
     </nav>
   );
 };
