@@ -11,10 +11,10 @@ interface GameName {
 }
 
 export function ProductRanking({ peripheralData }: Props) {
-  console.table(peripheralData);
+  // console.table(peripheralData);
   const [game, setGame] = useState<GameName>({ game: "valorant" });
 
-  console.log(game);
+  // console.log(game);
 
   return (
     <section className="relative mt-8 flex w-full flex-col items-center justify-center">
