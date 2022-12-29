@@ -42,7 +42,7 @@ export function Games ({setGame}:any) {
 
    
   return (
-    <section className='flex flex-row flex-wrap justify-center'>
+    <section className='flex flex-row flex-wrap justify-center max-w-screen-xl'>
       <GameCard 
       gameImageAlt='csgo2.jpg' 
       gameImageSrc='/csgo2.jpg' 

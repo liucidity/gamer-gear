@@ -31,12 +31,12 @@ export function ProductRankingList({ items }: Props) {
   };
 
   return (
-    <div className="flex flex-col items-center m-2">
-      <div className="my-8">
+    <div className="flex flex-col w-full items-center">
+      <div className="my-4">
         <Chart chartData={chartData} />
       </div>
 
-      <ol>
+      <ol className="w-full">
         {items.map((item) => {
           // console.log(product_name)
           return (

@@ -17,20 +17,20 @@ export function ProductRanking({ peripheralData }: Props) {
   // console.log(game);
 
   return (
-    <section className="relative mt-8 flex w-full flex-col items-center justify-center">
+    <section className="mt-8 flex max-w-full flex-col items-center overflow-x-hidden">
       <h1 className="text-xl">Top Products By Game</h1>
 
       <Games setGame={setGame} />
-      <div className="mt-6 flex flex-row justify-between">
-        <div className="w-1/3 text-center">
+      <div className="mt-6 flex w-screen max-w-screen-2xl flex-col items-center justify-between md:flex-row">
+        <div className="flex w-full max-w-full flex-col items-center px-4 md:w-1/3">
           <h3>Mice</h3>
           <ProductRankingList items={peripheralData[`${game.game}`].mouse} />
         </div>
-        <div className="w-1/3 text-center">
+        <div className="flex w-full max-w-full flex-col items-center px-4 md:w-1/3">
           <h3>Keyboards</h3>
           <ProductRankingList items={peripheralData[`${game.game}`].keyboard} />
         </div>
-        <div className="w-1/3 text-center">
+        <div className="flex w-full max-w-full flex-col items-center px-4 md:w-1/3">
           <h3>Headsets</h3>
           <ProductRankingList items={peripheralData[`${game.game}`].headset} />
         </div>

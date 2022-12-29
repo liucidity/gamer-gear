@@ -8,12 +8,11 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-
 }
 
-html {
+/* html {
   width: 100vw;
-}
+} */
 
 a {
   color: inherit;
@@ -29,22 +28,22 @@ a {
     color-scheme: dark;
   }
   body {
-    @apply bg-off-white text-black-main
+    @apply bg-off-white text-black-main;
   }
 }
 
 @layer components {
   .gamecard {
-    @apply w-[10em] h-[13em] relative m-4 flex items-center justify-center  rounded-xl overflow-hidden
+    @apply relative m-4 flex h-[13em] w-[10em] items-center justify-center  overflow-hidden rounded-xl;
   }
   .gamecard-image {
-    @apply absolute w-full h-full object-cover rounded-xl transition-all duration-500 ease-in-out transform bg-center bg-cover
+    @apply absolute h-full w-full transform rounded-xl bg-cover bg-center object-cover transition-all duration-500 ease-in-out;
   }
 
-  .gamecard:hover .gamecard-image{
+  .gamecard:hover .gamecard-image {
     @apply scale-110;
   }
   .logo-text {
-    @apply object-scale-down object-bottom
+    @apply object-scale-down object-bottom;
   }
 }

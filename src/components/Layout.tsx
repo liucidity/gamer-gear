@@ -14,13 +14,13 @@ const roboto = Roboto({
 
 const Layout = ({ children }: any) => {
   return (
-    <>
-      <Navbar></Navbar>
-      <main className={`${roboto.variable} relative w-screen font-sans`}>
-        {children}
-      </main>
-    </>
+    <main>
+      {/* <Navbar></Navbar> */}
+      {children}
+    </main>
   );
 };
 
 export default Layout;
+
+// className={`${roboto.variable} w-screen font-sans`}

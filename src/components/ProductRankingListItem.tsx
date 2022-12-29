@@ -33,8 +33,8 @@ export function ProductRankingListItem({ item }: Props) {
     }
   };
   return (
-    <div className="mb-2 flex h-[4rem] w-[28rem] flex-row items-center justify-between rounded-md bg-slate-200 p-2 drop-shadow-sm">
-      <div className="relative flex aspect-square h-full items-center justify-center overflow-hidden rounded-md bg-slate-50 ">
+    <div className="mb-2 flex h-[6rem] w-full max-w-full flex-row items-center justify-between gap-3 rounded-md bg-slate-200 p-2 drop-shadow-sm md:h-[4rem]">
+      <div className="relative flex aspect-square h-full max-h-full items-center justify-center overflow-hidden rounded-md bg-white">
         <CldImage
           src={srcImgString(item)}
           alt={"product image"}
@@ -42,12 +42,12 @@ export function ProductRankingListItem({ item }: Props) {
           height={100}
         ></CldImage>
       </div>
-      <div className="font-sans text-xl font-medium">{item.product_name}</div>
-      <div className="flex flex-col items-center ">
-        <span className="flex items-center justify-center rounded-full bg-gradient-to-br from-purple-light to-purple-dark px-2 py-1 text-xs font-bold text-off-white">
-          {item.player_peripherals.length}
-        </span>
+      <div className="break-words text-center font-sans text-xl font-medium">
+        {item.product_name}
       </div>
+      <span className="flex items-center justify-center rounded-full bg-gradient-to-br from-purple-light to-purple-dark px-2 py-1 text-xs font-bold text-off-white">
+        {item.player_peripherals.length}
+      </span>
     </div>
   );
 }

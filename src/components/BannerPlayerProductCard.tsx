@@ -7,14 +7,9 @@ import BannerProductCard from "./Widgets/BannerProductCard";
 type Props = {
   playerGearArray: any[];
   username: string;
-  cldUserImage: string;
 };
 
-const BannerPlayerProductCard = ({
-  playerGearArray,
-  username,
-}: // cldUserImage
-Props) => {
+const BannerPlayerProductCard = ({ playerGearArray, username }: Props) => {
   const bannerProductCards = playerGearArray.map((gear, index) => {
     return (
       <BannerProductCard

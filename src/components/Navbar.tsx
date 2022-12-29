@@ -9,7 +9,7 @@ const Navbar = () => {
     dropDownOpen ? setDropDownOpen(false) : setDropDownOpen(true);
   };
   return (
-    <nav className="fixed inset-x-0 top-0 z-10 bg-black-main px-6 py-5 md:px-14">
+    <nav className="fixed inset-x-0 z-50 bg-black-main px-6 py-5 md:px-14">
       <div className="flex justify-between md:justify-start">
         <Logo></Logo>
         {/* <button
